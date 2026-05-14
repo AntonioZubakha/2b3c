@@ -191,6 +191,7 @@ async function main() {
     });
 
     const checkout = await assertOk('checkout', async () => {
+      // Canonical persisted shape uses addressLine1 + zipCode; order-service also accepts legacy street/postalCode and normalizes.
       return await httpJson('/api/order/checkout', {
         method: 'POST',
         headers: { authorization: `Bearer ${token}` },
@@ -257,6 +258,7 @@ async function main() {
     });
 
     const bespokeCheckout = await assertOk('checkout (bespoke)', async () => {
+      // Same shipping shape as diamond checkout (canonical fields).
       return await httpJson('/api/order/checkout', {
         method: 'POST',
         headers: { authorization: `Bearer ${token}` },

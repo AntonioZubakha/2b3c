@@ -9,6 +9,27 @@ import { finalizePaidOrder } from './finalizePaidOrder.js';
 import { registerStripeWebhook } from './stripeWebhookPlugin.js';
 import { assertKycForHighTicketOrder } from './kycGate.js';
 
+/** Maps UI checkout keys (`street`, `postalCode`) to persisted Order schema (`addressLine1`, `zipCode`). */
+function normalizeShippingAddress(raw: unknown): {
+  fullName: string;
+  addressLine1: string;
+  city: string;
+  country: string;
+  zipCode: string;
+} {
+  const o = raw && typeof raw === 'object' ? (raw as Record<string, unknown>) : {};
+  const str = (k: string) => (typeof o[k] === 'string' ? (o[k] as string).trim() : '');
+  const addressLine1 = str('addressLine1') || str('street');
+  const zipCode = str('zipCode') || str('postalCode');
+  return {
+    fullName: str('fullName'),
+    addressLine1,
+    city: str('city'),
+    country: str('country'),
+    zipCode,
+  };
+}
+
 const fastify = Fastify({ logger: true });
 
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://mongodb:27017/stonee_orders';
@@ -341,12 +362,14 @@ fastify.post<{ Body: { sessionId: string, shippingAddress: any } }>('/checkout',
 
     await assertKycForHighTicketOrder(fastify.log, userId, totalAmount);
 
+    const shipping = normalizeShippingAddress(shippingAddress);
+
     // 2. Create Order
     const order = new Order({
       userId,
       items: validatedItems,
       totalAmount,
-      shippingAddress,
+      shippingAddress: shipping,
       status: OrderStatus.PENDING
     });
 

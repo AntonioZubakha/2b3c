@@ -84,6 +84,21 @@
 
 Ресурсы: `src/i18n/locales/{ru,en}/`. Доменные подписи к данным из API: модуль **`catalog`**, хелперы **`src/lib/displayI18n.ts`**.
 
+## Заказы: подписи UI ↔ статус API
+
+Источник статусов в API: `services/order-service/src/models/Order.ts`. После успешной оплаты (Stripe `confirm-stripe-payment`, webhook `payment_intent.succeeded`, или **`POST …/pay`** при разрешённой симуляции) бэкенд выставляет **`CONFIRMED`**, а не отдельный шаг **`PAID`**.
+
+| UI label (i18n `orders.status.*`) | Значение `order.status` | Когда |
+|-----------------------------------|---------------------------|--------|
+| Pending payment | `PENDING` | Заказ создан, оплата не завершена |
+| Paid — confirmed / Оплачено, подтверждён | `CONFIRMED` | Happy-path после оплаты |
+| Paid / Оплачен | `PAID` | Только если данные/merchant выставили вручную; **не** результат стандартного checkout |
+| Shipped / … | `SHIPPED` | Логистика (merchant / ops) |
+| Delivered / … | `DELIVERED` | Завершение доставки |
+| Cancelled / … | `CANCELLED` | Отмена |
+
+Страницы: `OrdersPage.tsx`, `OrderDetailPage.tsx` — стили **`PAID`** и **`CONFIRMED`** для покупателя совпадают (оба «оплачено и зафиксировано» визуально); различие по тексту см. ключи выше.
+
 ## Docker
 
 См. `info/DEVELOPMENT.md`: `scripts/docker-frontend-entrypoint.sh` в образе фронта поднимает `pnpm install` и **`npm run dev -- --host`** (Vite).

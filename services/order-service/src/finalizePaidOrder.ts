@@ -5,6 +5,8 @@ import { Order, OrderStatus } from './models/Order.js';
 const CATALOG_URL = process.env.CATALOG_SERVICE_URL || 'http://catalog-service:3000';
 const NOTIFY_URL = process.env.NOTIFICATION_SERVICE_URL || 'http://notification-service:3000';
 
+/** Sets order status to **CONFIRMED** in one step from **PENDING** (no intermediate **PAID** in Stripe/simulated/webhook flows). */
+
 export async function finalizePaidOrder(
   log: FastifyBaseLogger,
   orderId: string,

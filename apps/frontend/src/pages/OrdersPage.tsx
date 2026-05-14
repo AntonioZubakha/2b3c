@@ -32,8 +32,8 @@ const OrdersPage: React.FC = () => {
       case 'PENDING':
         return 'text-amber-700 bg-amber-50 border-amber-200';
       case 'PAID':
-        return 'text-emerald-800 bg-emerald-50 border-emerald-100';
       case 'CONFIRMED':
+        /* PAID: legacy/admin-only; Stripe + simulated pay finalize to CONFIRMED (see info/API.md). */
         return 'text-rose-gold-deep bg-blush-50 border-blush-200';
       case 'SHIPPED':
         return 'text-mauve bg-mauve/10 border-mauve/25';

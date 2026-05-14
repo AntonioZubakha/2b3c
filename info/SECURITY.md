@@ -25,6 +25,16 @@
 - **Stripe:** секреты только на сервере (`STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` в order-service). Webhook проверяется в order-service; gateway пропускает путь без JWT.
 - Режим **`STRIPE_ALLOW_SIMULATED_PAY`** — только для разработки без реального Stripe.
 
+### Симулированная оплата — открытый риск (2026-05-14)
+
+В коде order-service: `allowSimulatedPay === true`, если **`STRIPE_ALLOW_SIMULATED_PAY === 'true'`** или **`STRIPE_SECRET_KEY` пустой**. Это позволяет завершить заказ через **`POST /orders/:id/pay`** без реальной карты, если шлюз не блокирует вызов (JWT всё равно нужен). Для production с пустым Stripe по ошибке это **опасная конфигурация** (см. `.planning/codebase/CONCERNS.md`). **Follow-up (вне репо):** `SEC-FAIL-CLOSED-SIM-001` — требовать явный флаг даже при пустом секрете; до внедрения операционно задавать непустой `STRIPE_SECRET_KEY` и не полагаться на «тихую» симуляцию.
+
+### Stripe webhook — дедуп и повторная доставка (2026-05-14)
+
+- **Подпись:** `stripe.webhooks.constructEvent` с сырым телом; при неверной подписи — **400**.
+- **Идемпотентность:** перед обработкой `payment_intent.succeeded` вставляется документ **`ProcessedStripeEvent`** с уникальным **`event.id`**; дубликат (**Mongo 11000**) → **200** без повторного `finalizePaidOrder`.
+- **Ошибка после вставки lock:** при исключении в обработчике lock удаляется (`deleteOne`) и ошибка пробрасывается — Stripe может повторить тот же `event.id`; при следующей доставке вставка проходит снова. Это осознанный компромисс: не ослаблять подпись; детали — аудит **GAP-WEBHOOK-01** в `.planning/phases/02-checkout-order/02-01-PLAN.md`.
+
 ## Секреты
 
 - Не коммитить `.env` с прод-секретами.  

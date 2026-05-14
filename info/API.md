@@ -77,3 +77,39 @@ Upstream в этом репозитории — **Fastify + TypeScript**. Рег
 - **`GET /api/supplier/self/summary`** — JWT supplier; ответ: `supplierCompanyId`, `catalogSupplierId`, **`canSyncDiamondAtelier`** (совпадение с `DIAMOND_ATELIER_SUPPLIER_COMPANY_ID` / legacy user в env), **`diamondAtelierFeed`** только если `canSyncDiamondAtelier` (иначе `null` — чужой глобальный статус не отдаём).
 - **`GET /api/supplier/self/registry`** — JWT supplier; таблица фидов без строки Diamond Atelier, если компания к ней не привязана; текст `auth` без обещания DA-синка для чужих компаний.
 - Публичный **`GET /api/supplier/registry`** — полный справочник фидов (в списке публичных маршрутов шлюза); для UI партнёрского кабинета предпочтительнее **`/self/registry`**.
+
+## Order-service (через `/api/order`)
+
+Прокси снимает префикс `/api/order`. Ниже — пути **на сервисе** (как в коде); снаружи добавляйте **`/api/order`**.
+
+### Корзина (гостевая, без JWT на gateway)
+
+- **`GET /cart/:sessionId`** — текущая корзина.
+- **`POST /cart/:sessionId/add`** — тело: `{ type, productId, price, quantity?, bespokePair? }` (`jewelry` | `diamond` | `bespoke` | …).
+- **`DELETE /cart/:sessionId/item/:productId`** — удалить первую строку с данным `productId`.
+
+### Checkout и заказ (JWT на gateway)
+
+- **`POST /checkout`** — тело: `{ sessionId, shippingAddress }`. Сервер вызывает **`POST {PRICING_SERVICE_URL}/validate-prices`** с позициями корзины и **не доверяет** клиентским ценам. Адрес сохраняется в каноническом виде: **`addressLine1`** (из `addressLine1` **или** UI-поля `street`), **`zipCode`** (из `zipCode` **или** `postalCode`), плюс `fullName`, `city`, `country` — см. `services/order-service/src/server.ts` (`normalizeShippingAddress`). Ответ: `{ success: true, data: { orderId } }`. Статус нового заказа: **`PENDING`**.
+
+### Оплата
+
+- **`POST /orders/:id/create-payment-intent`** — JWT, валидный Stripe; KYC gate при высокой сумме. Сохраняет `paymentIntentId` на заказе. Ответ: `{ success, data: { clientSecret, amount, currency } }`.
+- **`POST /orders/:id/confirm-stripe-payment`** — после успешного `stripe.confirmPayment` на клиенте; проверяет PI `succeeded` и сумму в центах; вызывает `finalizePaidOrder`. Ответ: `{ success, data: order, meta?: { alreadyConfirmed } }`.
+- **`POST /orders/:id/pay`** — **симулированная** оплата: разрешена только если `STRIPE_ALLOW_SIMULATED_PAY=true` **или** пустой `STRIPE_SECRET_KEY` (см. `info/SECURITY.md`). Иначе **400** с текстом про Stripe.
+
+### Статусы заказа (фактическая машина после оплаты)
+
+Значения enum: `PENDING`, `PAID`, `CONFIRMED`, `SHIPPED`, `DELIVERED`, `CANCELLED` (`Order.ts`).
+
+- После **успешной** оплаты (Stripe confirm, webhook `payment_intent.succeeded`, или **`POST …/pay`** при разрешённой симуляции) `finalizePaidOrder` атомарно переводит заказ **`PENDING` → `CONFIRMED`** (промежуточный **`PAID`** в этом happy-path **не** выставляется).
+- **`PAID`** остаётся в модели для совместимости / ручных сценариев (например merchant), но **покупательский** checkout не использует его как отдельный шаг.
+
+### Webhook Stripe
+
+- На order-service: **`POST /webhooks/stripe`** (сырое тело, подпись `stripe-signature`). Через gateway для браузера/Stripe Dashboard: **`POST /api/order/webhooks/stripe`** (см. `apps/api-gateway/src/server.ts`, публичный маршрут).
+- Идемпотентность: коллекция **`ProcessedStripeEvent`** по **`event.id`**; дубликат Mongo **11000** → `200` без повторного финала. При ошибке после вставки lock удаляется — см. `info/SECURITY.md`.
+
+### Покупательские списки
+
+- **`GET /my-orders`**, **`GET /my-orders/:id`** — JWT, только заказы текущего `x-user-id`.

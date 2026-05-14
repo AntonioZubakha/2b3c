@@ -35,7 +35,8 @@ export type PaymentIntentPayload = {
 };
 export type PaymentIntentCreateResponse = ApiResponse<PaymentIntentPayload>;
 
-// Orders (shape matches order-service mongoose model output)
+// Orders (shape matches order-service mongoose model output).
+// After Stripe, webhook, or simulated pay, server sets CONFIRMED (not PAID). PAID remains in the enum for legacy/admin.
 export type OrderStatus = 'PENDING' | 'PAID' | 'CONFIRMED' | 'SHIPPED' | 'DELIVERED' | 'CANCELLED';
 export type OrderItem = {
   type: 'diamond' | 'setting' | 'jewelry' | 'bespoke';

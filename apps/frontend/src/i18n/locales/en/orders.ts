@@ -18,7 +18,7 @@ export const orders = {
   status: {
     PENDING: 'Pending payment',
     PAID: 'Paid',
-    CONFIRMED: 'Confirmed',
+    CONFIRMED: 'Paid — confirmed',
     SHIPPED: 'Shipped',
     DELIVERED: 'Delivered',
     CANCELLED: 'Cancelled',
