@@ -1,2 +1,0 @@
-# Shell entrypoints must use LF so Linux shebang works (Windows CRLF breaks exec)
-*.sh text eol=lf

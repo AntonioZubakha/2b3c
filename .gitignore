@@ -36,3 +36,6 @@ Thumbs.db
 
 # Optional: uncomment if you use worktrees / temp
 # .git/worktrees/
+
+# External reference only (not part of Stonee; keep local clone out of the repo)
+lgdx-main/

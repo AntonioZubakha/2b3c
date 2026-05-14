@@ -1,8 +1,0 @@
-/* Bootstrap me-1 / me-2 equivalents — margin utilities are not in our CSS bundle */
-.iconMarginEnd {
-  margin-inline-end: var(--spacing-md);
-}
-
-.iconMarginEndSm {
-  margin-inline-end: var(--spacing-sm);
-}
