@@ -53,9 +53,9 @@ completed: 2026-05-14
 
 ## Accomplishments
 
-- Expanded **Матрица (полная)** with grep-friendly file:line pointers for all six statuses, buyer GET routes, `orderStatusLabel`, and SLA strings.
+- Expanded **Матрица (полная)** with grep-friendly file:line pointers for all six statuses, buyer GET routes, `orderStatusLabel`, timeline (`orderTracking.ts`), and post–03-02 copy keys (`listHints` / `progressHints`).
 - Added **подматрица** `items[].type` vs API-only `order.status` per D-03-02 (explicit «нет поля manufacturing»).
-- Refined **GAP register** with P0/P1, GAP-SMK-01 assert contract, and **Multi-source coverage** rows for D-03-01–D-03-04 individually.
+- Refined **GAP register** with P0/P1, GAP-SMK-01 assert contract, **статус закрытия** после 03-02, and **Multi-source coverage** rows for D-03-01–D-03-04 individually.
 
 ## Task Commits
 
@@ -82,7 +82,7 @@ None.
 
 ## Next Phase Readiness
 
-03-02 can implement `orderTracking.ts`, timeline on `OrderDetailPage`, conditional copy, docs, and smoke asserts using this PLAN as SoT.
+03-02 delivered `orderTracking.ts`, timeline on `OrderDetailPage`, status-aware copy, docs, and smoke asserts; this audit PLAN lists closure status and current line pointers for maintainers.
 
 ---
 
@@ -93,4 +93,4 @@ None.
 ## Self-Check: PASSED
 
 - `.planning/phases/03-tracking/03-01-SUMMARY.md` exists.
-- Plan patterns `Матрица (полная)`, `GAP-TRK-01`, `OrderStatus`, `GAP-TRK*`, `GAP-SMK-01`, `Multi-source coverage` verified via workspace search (host shell had no `rg` in PATH).
+- `03-01-PLAN.md` contains `Матрица (полная)`, `GAP-TRK-01`, `OrderStatus`, `GAP-TRK`, `GAP-SMK-01`, `Multi-source coverage`, post–03-02 **Состояние после внедрения**, and GAP **Статус** column.
