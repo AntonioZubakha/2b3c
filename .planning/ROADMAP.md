@@ -67,11 +67,12 @@ Plans:
 1. Страница/блок «мой заказ» отражает статусы, которые реально приходят с API.
 2. E2E или smoke сценарий обновлён под новые статусы.
 
-**Plans:** TBD
+**Plans:** 2 plans (`.planning/phases/03-tracking/03-0N-PLAN.md`)
 
 Plans:
 
-- [ ] 03-01: Модель статусов и UI — PLAN.md
+- [ ] 03-01-PLAN.md — Read-only аудит: UI/i18n/smoke vs `OrderStatus`, GAP TRK-01/02, multi-source
+- [ ] 03-02-PLAN.md — Timeline + копирайт + info + smoke assert (без новых enum в бэкенде)
 
 ### Phase 4: Бренд 2B3C и РФ
 
@@ -115,7 +116,7 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. Два сценария каталога | 3/3 | Complete | 2026-05-14 |
 | 2. Чекаут и заказ | 2/2 | Complete | 2026-05-14 |
-| 3. Трекинг | 0/TBD | Not started | - |
+| 3. Трекинг | 0/2 | 2 planned | - |
 | 4. Бренд и РФ | 0/TBD | Not started | - |
 | 5. Качество репозитория | 0/TBD | Not started | - |
 
