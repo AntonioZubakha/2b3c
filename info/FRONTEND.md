@@ -99,6 +99,13 @@
 
 Страницы: `OrdersPage.tsx`, `OrderDetailPage.tsx` — стили **`PAID`** и **`CONFIRMED`** для покупателя совпадают (оба «оплачено и зафиксировано» визуально); различие по тексту см. ключи выше.
 
+### Buyer timeline (только `OrderStatus`)
+
+- **Источник этапов на UI:** только поле **`status`** из **`GET /api/order/my-orders`** и **`GET /api/order/my-orders/:id`**. Отдельного поля «manufacturing» / подэтапов изготовления в JSON **нет** — шкала не должна показывать шаги вне enum.
+- **Хелпер:** `apps/frontend/src/lib/orderTracking.ts` — `getOrderTrackingSteps(status)` возвращает узлы с `id: OrderStatus` и флаги `completed` / `current` для честного таймлайна на **`OrderDetailPage`**.
+- **Контекст линии заказа:** по `items[].type` (например bespoke) можно показать текст ожидаемого процесса **как пояснение**, явно не выдавая его за отдельный сигнал бэкенда (см. `orderDetail.trackingContext*` в i18n).
+- **Список заказов:** краткая подсказка под карточкой — **`orders.listHints.*`**, привязана к **`order.status`** (без фиксированного SLA при `SHIPPED` / `DELIVERED` / `CANCELLED`).
+
 ## Docker
 
 См. `info/DEVELOPMENT.md`: `scripts/docker-frontend-entrypoint.sh` в образе фронта поднимает `pnpm install` и **`npm run dev -- --host`** (Vite).

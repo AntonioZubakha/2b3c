@@ -3,6 +3,11 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Clock, MapPin, Package } from '../components/icons';
 import { cartItemTypeLabel, orderStatusLabel } from '../lib/displayI18n';
+import {
+  getOrderTrackingSteps,
+  orderDetailProgressHintGroup,
+  orderHasBespoke,
+} from '../lib/orderTracking';
 import { apiJson, GATEWAY, type ApiResponse } from '../lib/api';
 import type { OrderDoc } from '../lib/contracts';
 
@@ -83,6 +88,7 @@ const OrderDetailPage: React.FC = () => {
   }
 
   const addr = order.shippingAddress;
+  const trackingSteps = getOrderTrackingSteps(order.status);
 
   return (
     <div className="pt-32 pb-20 px-6 max-w-3xl mx-auto">
@@ -122,6 +128,43 @@ const OrderDetailPage: React.FC = () => {
             <p className="text-[10px] font-medium text-ash uppercase tracking-[0.22em] mb-1">{t('orderDetail.total')}</p>
             <p className="font-serif text-3xl text-ink">${order.totalAmount.toLocaleString()}</p>
           </div>
+        </div>
+
+        <div className="p-8 border-b border-cream-200">
+          <h2 className="font-serif text-xl text-ink mb-1">{t('orderDetail.trackingTitle')}</h2>
+          <p className="text-xs text-ink-soft leading-relaxed mb-6 max-w-xl">
+            {orderHasBespoke(order.items) ? t('orderDetail.trackingContextBespoke') : t('orderDetail.trackingContextReady')}
+          </p>
+          <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {trackingSteps.map((step, idx) => (
+              <li
+                key={step.id}
+                className={`flex gap-3 rounded-xl border px-4 py-3 ${
+                  step.current
+                    ? 'border-rose-gold-deep bg-blush-50'
+                    : step.completed
+                      ? 'border-emerald-100 bg-emerald-50/60'
+                      : 'border-cream-200 bg-cream-50/40'
+                }`}
+              >
+                <span
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-[10px] font-medium ${
+                    step.current
+                      ? 'border-rose-gold-deep text-rose-gold-deep'
+                      : step.completed
+                        ? 'border-emerald-200 text-emerald-800'
+                        : 'border-cream-200 text-ash'
+                  }`}
+                  aria-current={step.current ? 'step' : undefined}
+                >
+                  {idx + 1}
+                </span>
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-ink leading-snug">{orderStatusLabel(t, step.id)}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
 
         <div className="p-8 border-b border-cream-200">
@@ -167,8 +210,8 @@ const OrderDetailPage: React.FC = () => {
             </p>
             <p>{addr.country}</p>
           </div>
-          <div className="flex items-center gap-2 text-xs text-ash mt-6">
-            <Clock size={12} /> {t('orderDetail.processingNote')}
+          <div className="flex items-center gap-2 text-xs text-ink-soft mt-6">
+            <Clock size={12} /> {t(`orderDetail.progressHints.${orderDetailProgressHintGroup(order.status)}`)}
           </div>
         </div>
       </div>

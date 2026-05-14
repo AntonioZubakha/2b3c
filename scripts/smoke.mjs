@@ -218,6 +218,16 @@ async function main() {
       });
     });
 
+    await assertOk('my-orders order status CONFIRMED after pay', async () => {
+      const res = await httpJson(`/api/order/my-orders/${encodeURIComponent(orderId)}`, {
+        headers: { authorization: `Bearer ${token}` },
+      });
+      if (!res?.success || !res.data) throw new Error('Invalid my-orders/:id response');
+      if (res.data.status !== 'CONFIRMED') {
+        throw new Error(`Expected status CONFIRMED after pay, got ${res.data.status}`);
+      }
+    });
+
     await assertOk('my-orders contains created order', async () => {
       const res = await httpJson('/api/order/my-orders', {
         headers: { authorization: `Bearer ${token}` },
@@ -283,6 +293,16 @@ async function main() {
         method: 'POST',
         headers: { authorization: `Bearer ${token}` },
       });
+    });
+
+    await assertOk('my-orders bespoke order status CONFIRMED after pay', async () => {
+      const res = await httpJson(`/api/order/my-orders/${encodeURIComponent(bespokeOrderId)}`, {
+        headers: { authorization: `Bearer ${token}` },
+      });
+      if (!res?.success || !res.data) throw new Error('Invalid my-orders/:id response (bespoke)');
+      if (res.data.status !== 'CONFIRMED') {
+        throw new Error(`Expected bespoke status CONFIRMED after pay, got ${res.data.status}`);
+      }
     });
   }
 

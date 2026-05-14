@@ -9,7 +9,14 @@ export const orders = {
   orderRef: 'Order reference',
   datePlaced: 'Date placed',
   total: 'Total',
-  processingTime: 'Processing time: 3–5 business days',
+  listHints: {
+    prePay: 'Awaiting payment — timelines start after confirmation.',
+    preShip:
+      'Confirmed — preparation and shipping follow the status on your order detail (no separate “in production” step in the app).',
+    inTransit: 'On its way — tracking uses the Shipped / Delivered steps on the detail page.',
+    delivered: 'Delivered — thank you for choosing Stonee.',
+    cancelled: 'This order was cancelled.',
+  },
   viewDetails: 'View details',
   helpTitle: 'Need help with an order?',
   helpSubtitle: 'Our concierge is available around the clock for personalised updates.',

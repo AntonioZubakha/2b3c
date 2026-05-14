@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ChevronRight, Clock, ExternalLink, Package } from '../components/icons';
 import { Link } from 'react-router-dom';
 import { cartItemTypeLabel, orderStatusLabel } from '../lib/displayI18n';
+import { orderListHintGroup } from '../lib/orderTracking';
 import { apiJson, GATEWAY } from '../lib/api';
 import type { OrderDoc, OrdersListResponse } from '../lib/contracts';
 
@@ -140,8 +141,9 @@ const OrdersPage: React.FC = () => {
                   ))}
                 </div>
                 <div className="flex justify-between items-center mt-4">
-                  <div className="flex items-center gap-2 text-xs text-ash">
-                    <Clock size={12} /> {t('orders.processingTime')}
+                  <div className="flex items-center gap-2 text-xs text-ink-soft max-w-[70%]">
+                    <Clock size={12} className="shrink-0" />
+                    <span>{t(`orders.listHints.${orderListHintGroup(order.status)}`)}</span>
                   </div>
                   <Link
                     to={`/account/orders/${encodeURIComponent(String(order._id))}`}
