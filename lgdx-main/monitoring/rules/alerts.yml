@@ -1,0 +1,84 @@
+groups:
+  - name: lgdx-service-health
+    rules:
+      - alert: ServiceDown
+        expr: up{job=~"lgdx-.*"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "{{ $labels.job }} is unreachable"
+          description: "Prometheus has not scraped {{ $labels.job }} on {{ $labels.instance }} for over 2 minutes."
+
+      - alert: HighServerErrorRate
+        expr: >
+          increase(http_request_duration_seconds_count{job="lgdx-server",status_code=~"5.."}[5m])
+          /
+          clamp_min(increase(http_request_duration_seconds_count{job="lgdx-server"}[5m]), 1)
+          > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High 5xx rate on lgdx-server"
+          description: "More than 5% of API responses returned 5xx during the last 5 minutes."
+
+      - alert: MarketPriceSnapshotStale
+        expr: market_price_snapshot_age_minutes > 240
+        for: 15m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Market price cache is stale"
+          description: "Latest market price snapshot is older than 4 hours. Current age: {{ $value | printf \"%.1f\" }} minutes."
+
+      - alert: BackupOverdue
+        expr: (time() - backup_last_success_timestamp) > 36 * 3600
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Backups have not completed in the last 36 hours"
+          description: "Последний успешный backup был {{ $value | humanizeDuration }} назад. Метрика: backup_last_success_timestamp"
+
+      - alert: FTPErrorBurst
+        expr: increase(ftp_errors_total[5m]) > 10
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "FTP service is seeing elevated error rates"
+          description: "More than 10 FTP errors recorded in the last 5 minutes."
+
+  # Certificate metrics from ssl-renewal-service (/metrics) — see prometheus.yml job lgdx-ssl-renewal-service
+  - name: ssl_certificates
+    rules:
+      - alert: SSLCertificateExpiringSoon
+        expr: ssl_certificate_expiry_days{job="lgdx-ssl-renewal-service"} < 14 and ssl_certificate_expiry_days{job="lgdx-ssl-renewal-service"} > 0
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: "SSL certificate expires in less than 14 days"
+          description: "ssl_certificate_expiry_days={{ $value }} (from ssl-renewal-service metrics)"
+
+      - alert: SSLCertificateExpiredOrInvalid
+        expr: ssl_certificate_expiry_days{job="lgdx-ssl-renewal-service"} <= 0
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: "SSL certificate expired or expiry metric not positive"
+          description: "Check ssl-renewal-service logs and certbot state on the host."
+
+  - name: rabbitmq
+    rules:
+      - alert: RabbitMQMemoryAlarm
+        expr: rabbitmq_node_mem_alarm == 1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "RabbitMQ memory alarm (watermark) is active"
+          description: "RabbitMQ поднял memory watermark (rabbitmq_node_mem_alarm=1) на {{ $labels.instance }}. Проверь потребление памяти / нагрузку / backlog."
+

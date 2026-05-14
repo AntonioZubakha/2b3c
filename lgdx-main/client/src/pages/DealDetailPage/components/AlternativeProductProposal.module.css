@@ -1,0 +1,223 @@
+﻿.alternativeProposalContainer {
+  padding: var(--spacing-xl);
+  background-color: rgba(var(--color-brand-primary-rgb), 0.05);
+  border: 1px solid rgba(var(--color-brand-primary-rgb), 0.1);
+  border-radius: var(--radius-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-primary);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+  animation: gradientShift 4s ease infinite; /* Animation from tokens.css */
+}
+
+.introText {
+  text-align: center;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-xl) auto;
+}
+
+.productsComparison {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.productColumn {
+  flex: 1;
+  max-width: 400px;
+}
+
+.productColumn h4 {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-primary);
+}
+
+.productCard {
+  background-color: var(--color-surface-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+}
+
+.productCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.productCard p {
+  margin: var(--spacing-xs) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+.productCard strong {
+  color: var(--color-text-primary);
+  margin-right: var(--spacing-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.productCard hr {
+  border-color: var(--color-border-primary);
+  margin: var(--spacing-sm) 0;
+}
+
+.productCard .price {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  color: var(--color-brand-primary-900);
+  text-align: right;
+}
+
+.originalProduct .productCard {
+  border-left: 3px solid var(--color-brand-secondary);
+}
+
+.alternativeProduct .productCard {
+  border-left: 3px solid var(--color-success);
+}
+
+.comparisonArrow {
+  font-size: var(--font-size-3xl);
+  color: var(--color-brand-primary-900);
+  margin-top: 70px;
+}
+
+.proposalSummary {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+.proposalSummary p {
+  font-size: 1.1em;
+  font-weight: var(--font-weight-medium);
+}
+
+.proposalSummary .textDanger {
+  color: var(--color-danger);
+}
+
+.proposalSummary .textSuccess {
+  color: var(--color-success);
+}
+
+.proposalActions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.proposalActions .btn {
+  font-size: 1em;
+  padding: 10px 20px;
+}
+
+.proposalActions .btn:hover {
+  transform: translateY(-2px);
+}
+
+.proposalActions .btn .fas {
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    .productsComparison {
+        flex-direction: column;
+        align-items: center;
+    }
+    .comparisonArrow {
+        transform: rotate(90deg);
+        margin: 10px 0;
+    }
+}
+
+.comparisonTable {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: var(--color-surface-primary);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.comparisonTable th,
+.comparisonTable td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border-primary);
+  color: var(--color-text-primary);
+}
+
+.comparisonTable th {
+  background-color: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.comparisonTable td:first-child {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.comparisonTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.highlight {
+  background-color: var(--color-surface-secondary);
+  font-weight: bold;
+  color: var(--color-text-primary);
+}
+
+.priceHighlight {
+  font-weight: bold;
+}
+
+.priceIncrease {
+  color: var(--color-danger);
+}
+.priceIncrease i {
+  margin-left: 8px;
+  color: var(--color-danger);
+}
+
+.priceDecrease {
+  color: var(--color-success);
+}
+.priceDecrease i {
+  margin-left: 8px;
+  color: var(--color-success);
+}
+
+.spacerRow td {
+  padding: 0.5rem 0 !important;
+  border-bottom: 1px dashed var(--color-border-secondary) !important;
+}
+
+.totalRow td {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding-top: 1rem !important;
+  border-top: 2px solid var(--color-border-secondary) !important;
+  border-bottom: none !important;
+  color: var(--color-text-primary);
+}
+
+.totalRow td:last-child {
+  color: var(--color-brand-primary-900);
+} 

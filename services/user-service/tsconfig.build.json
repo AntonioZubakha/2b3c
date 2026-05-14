@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist/services/user-service",
+    "module": "commonjs",
+    "esModuleInterop": true
+  },
+  "include": ["src/**/*"]
+}

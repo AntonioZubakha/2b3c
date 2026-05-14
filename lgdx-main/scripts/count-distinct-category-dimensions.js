@@ -1,0 +1,20 @@
+// Why 16k+ categories: count distinct shape/weight/clarity/color in products
+const db = db.getSiblingDB('lgdx');
+const match = { status: 'available', onDeal: { $ne: true } };
+const shapes = db.products.distinct('shape', match);
+const weights = db.products.distinct('weight', match);
+const clarities = db.products.distinct('clarity', match);
+const colors = db.products.distinct('color', match);
+print('Distinct SHAPEs:', shapes.length);
+print(shapes.sort().slice(0, 30).join(', ') + (shapes.length > 30 ? ', ...' : ''));
+print('');
+print('Distinct WEIGHTs:', weights.length);
+print(weights.sort().slice(0, 35).join(', ') + (weights.length > 35 ? ', ...' : ''));
+print('');
+print('Distinct CLARITYs:', clarities.length);
+print(clarities.sort().join(', '));
+print('');
+print('Distinct COLORs:', colors.length);
+print(colors.sort().join(', '));
+print('');
+print('Theoretical max if normalized (22*5*4*11):', 22*5*4*11);

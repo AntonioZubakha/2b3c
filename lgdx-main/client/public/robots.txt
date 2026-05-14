@@ -1,0 +1,99 @@
+# robots.txt for LGDeal - Global B2B Lab-Grown Diamond Exchange
+# https://www.robotstxt.org/robotstxt.html
+
+# =============================================================================
+# CRITICAL: Allow /static/ for CSS/JS rendering
+# Google needs access to static resources to properly render React pages
+# =============================================================================
+
+User-agent: *
+Allow: /
+
+# Explicitly allow static resources (CSS, JS, fonts, images)
+Allow: /static/
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /apple-touch-icon.png
+Allow: /og-image.png
+Allow: /manifest.json
+Allow: /site.webmanifest
+
+# Allow public pages
+Allow: /catalog
+Allow: /market-overview
+Allow: /about-us
+Allow: /category-stats
+Allow: /terms-of-use
+Allow: /privacy-policy
+
+# Block private/authenticated areas
+Disallow: /admin-panel/
+Disallow: /admin-panel$
+Disallow: /cart
+Disallow: /my-deals
+Disallow: /my-company
+Disallow: /deal/*
+Disallow: /verify-email
+Disallow: /verify-phone
+Disallow: /reset-password
+Disallow: /accept-invite
+
+# Block API endpoints (not needed for indexing)
+Disallow: /api/
+
+# Block uploads (user-generated content, should be served via CDN if public)
+Disallow: /uploads/
+
+# Crawl-delay (optional, helps with server load)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://lgdeal.com/sitemap.xml
+
+# =============================================================================
+# Specific rules for major search engines
+# =============================================================================
+
+User-agent: Googlebot
+Allow: /
+Allow: /static/
+Allow: /catalog
+Allow: /market-overview
+Allow: /about-us
+Allow: /category-stats
+Disallow: /admin-panel/
+Disallow: /cart
+Disallow: /my-deals
+Disallow: /my-company
+Disallow: /deal/*
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Allow: /static/
+Allow: /catalog
+Allow: /market-overview
+Allow: /about-us
+Allow: /category-stats
+Disallow: /admin-panel/
+Disallow: /cart
+Disallow: /my-deals
+Disallow: /my-company
+Disallow: /deal/*
+Disallow: /api/
+
+# Block AI crawlers and scrapers (optional - protects content from training data)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /

@@ -1,0 +1,58 @@
+export const checkout = {
+  initializing: 'Инициализация безопасной оплаты…',
+  backToCart: 'В корзину',
+  stepLogistics: 'Логистика',
+  stepSettlement: 'Оплата',
+  stepConfirmation: 'Подтверждение',
+  deliveryTitle: 'Данные доставки',
+  fullLegalName: 'Полное имя',
+  namePlaceholder: 'Напр.: Александра Стоун',
+  street: 'Адрес',
+  streetPlaceholder: 'ул. Пример, 1, Москва',
+  city: 'Город',
+  cityPlaceholder: 'Москва',
+  postal: 'Индекс',
+  postalPlaceholder: '101000',
+  proceedSettlement: 'Перейти к оплате',
+  initializingBtn: 'Инициализация…',
+  settlementTitle: 'Оплата',
+  devModeTitle: 'Режим разработки',
+  devModeBody:
+    'Укажите VITE_STRIPE_PUBLISHABLE_KEY и на сервере STRIPE_SECRET_KEY для Stripe Payment Element. Пока оплата имитируется для тестов.',
+  cardPreviewDisabled: 'Превью карты (отключено)',
+  stripeSecure:
+    'Данные карты обрабатывает Stripe; Stonee не видит полный номер карты.',
+  simSecure:
+    'Транзакция защищена шифрованием уровня банка. Stonee не хранит реквизиты.',
+  securing: 'Защита транзакции…',
+  simPay: 'Имитация оплаты — ${{amount}}',
+  testPay: 'Тестовая оплата — ${{amount}}',
+  stripePrepare: 'Подготовка защищённой сессии Stripe…',
+  stripeStartError: 'Не удалось начать оплату картой',
+  stripeMissingSession: 'Нет платёжной сессии',
+  paymentInitFailed: 'Ошибка инициализации оплаты',
+  kycRequiredTitle: 'Требуется проверка личности',
+  kycRequiredBody:
+    'Для заказов от порога на платформе нужен аккаунт покупателя с завершённым KYC. Завершите проверку и повторите попытку.',
+  kycUnavailableTitle: 'Сервис проверки недоступен',
+  kycUnavailableBody:
+    'Не удалось связаться с сервисом проверки. Подождите немного и попробуйте снова.',
+  kycDevHint:
+    'Локальная разработка: при STONEE_ALLOW_KYC_SELF_VERIFY=true вызовите POST /api/user/auth/kyc/self-verify с Bearer-токеном и повторите.',
+  kycSecurityCta: 'Раздел безопасности аккаунта',
+  checkoutFailedGeneric: 'Оформление не удалось. Попробуйте ещё раз.',
+  acquisitionTitle: 'Покупка',
+  acquisitionComplete: 'завершена',
+  successBody:
+    'Заказ #{{id}} оформлен. Документы для сейфа готовятся.',
+  continueBrowsing: 'Продолжить просмотр',
+  accessVault: 'Открыть сейф',
+  manifestSummary: 'Сводка заказа',
+  qty: 'Кол-во: 1',
+  expressLogistics: 'Экспресс застрахованная доставка',
+  compFree: '$0 (беспл.)',
+  total: 'Итого',
+  trustTitle: 'Инфраструктура доверия',
+  trustBody:
+    'Каждая отправка Stonee застрахована и отслеживается по зашифрованной ссылке.',
+};

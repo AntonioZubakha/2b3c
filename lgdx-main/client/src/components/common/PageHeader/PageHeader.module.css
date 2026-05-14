@@ -1,0 +1,237 @@
+﻿/* ==========================================================================
+   UNIFIED PAGE HEADER COMPONENT
+   Единый стиль заголовков для всех страниц проекта
+   ========================================================================== */
+
+.pageHeader {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-4xl);
+  padding: var(--spacing-3xl) var(--spacing-2xl);
+  
+  /* Position relative for decorative elements */
+  position: relative;
+  
+  /* Animation */
+  animation: fadeIn 0.6s var(--ease-out);
+}
+
+.headerContent {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xl);
+  
+  /* Max width for readability */
+  max-width: var(--content-width-3xl);
+  width: 100%;
+}
+
+.headerIcon {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Size */
+  width: 80px;
+  height: 80px;
+  
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  
+  /* Animation */
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.headerIcon i {
+  font-size: var(--font-size-4xl);
+  color: var(--color-brand-primary-900);
+}
+
+.headerText {
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  
+  /* Width */
+  width: 100%;
+}
+
+.pageTitle {
+  /* Reset */
+  margin: 0;
+  
+  /* Typography */
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  letter-spacing: var(--letter-spacing-wide);
+  
+  color: var(--color-text-primary);
+}
+
+.pageSubtitle {
+  /* Reset */
+  margin: 0;
+  
+  /* Typography */
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-brand-primary-900);
+  line-height: 1.45;
+}
+
+.pageDescription {
+  /* Reset */
+  margin: 0;
+  
+  /* Typography */
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  
+  /* Max width for readability */
+  max-width: var(--content-width-lg);
+}
+
+.headerActions {
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  
+  /* Spacing */
+  margin-top: var(--spacing-xl);
+  
+  /* Responsive */
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   DECORATIVE ELEMENTS
+   ========================================================================== */
+
+.pageHeader::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: var(--color-brand-primary);
+  border-radius: var(--radius-full);
+}
+
+/* Light theme readability guard: prevent washed subtitles */
+[data-theme='light'] .pageSubtitle {
+  color: #7a628f;
+  font-weight: var(--font-weight-semibold);
+}
+
+[data-theme='light'] .pageHeader::after {
+  background: linear-gradient(90deg, transparent, rgba(var(--color-brand-primary-rgb), 0.72), transparent);
+}
+
+/* Удалено - использует централизованные анимации из homepage-theme.css */
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .pageHeader {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+    margin-bottom: var(--spacing-3xl);
+  }
+  
+  .headerIcon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .headerIcon i {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .pageTitle {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .pageSubtitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .pageDescription {
+    font-size: var(--font-size-md);
+  }
+  
+  .headerActions {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .pageHeader {
+    padding: var(--spacing-xl) var(--spacing-md);
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .headerIcon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .headerIcon i {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .pageTitle {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .pageSubtitle {
+    font-size: var(--font-size-md);
+  }
+  
+  .pageDescription {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .pageHeader,
+  .headerIcon,
+  .pageTitle,
+  .pageHeader::after {
+    animation: none;
+  }
+  
+  .headerIcon {
+    transform: none;
+  }
+}
+
+/* Focus visible for interactive elements */
+.headerActions *:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}

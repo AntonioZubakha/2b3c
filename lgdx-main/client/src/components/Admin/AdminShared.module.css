@@ -1,0 +1,156 @@
+/* ==========================================================================
+   UNIFIED ADMIN SHARED STYLES
+   Использует централизованную систему design tokens
+   ========================================================================== */
+
+/* Base styles for admin list containers and items */
+.adminListContainer {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.adminListItem {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-2xl) var(--spacing-3xl);
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal) var(--ease-in-out);
+}
+
+.adminListItem:hover {
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-md);
+  transform: var(--transform-hover-lift-sm);
+}
+
+.adminItemDetails {
+  flex-grow: 1;
+  padding-right: var(--spacing-xl);
+}
+
+.adminItemDetails h4 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.adminItemSubDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.adminItemSubDetails p {
+  font-size: var(--font-size-sm);
+  margin: var(--spacing-xs) 0;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  line-height: 1.4;
+}
+
+.adminItemSubDetails p strong {
+  color: var(--color-text-primary);
+  min-width: 100px;
+  display: inline-block;
+  font-weight: var(--font-weight-medium);
+}
+
+.adminItemActions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-md);
+  min-width: 150px;
+}
+
+/* ==========================================================================
+   STATUS INDICATORS - Унифицированная система статусов
+   ========================================================================== */
+
+.adminStatus {
+  font-weight: var(--font-weight-semibold);
+  display: inline-flex;
+  align-items: center;
+  text-transform: capitalize;
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  gap: var(--spacing-xs);
+}
+
+.adminStatus::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  margin-right: var(--spacing-xs);
+}
+
+/* Success states */
+.adminStatus.success { 
+  color: var(--color-success);
+  background-color: rgba(var(--color-success-rgb), 0.1);
+}
+.adminStatus.success::before { 
+  background-color: var(--color-success); 
+}
+
+/* Warning/Pending states */
+.adminStatus.syncing,
+.adminStatus.pending { 
+  color: var(--color-warning);
+  background-color: rgba(var(--color-warning-rgb), 0.1);
+}
+.adminStatus.syncing::before,
+.adminStatus.pending::before { 
+  background-color: var(--color-warning); 
+}
+
+/* Error states */
+.adminStatus.error { 
+  color: var(--color-danger);
+  background-color: rgba(var(--color-danger-rgb), 0.1);
+}
+.adminStatus.error::before { 
+  background-color: var(--color-danger); 
+}
+
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .adminListItem {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--spacing-xl);
+  }
+  
+  .adminItemDetails {
+    padding-right: 0;
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .adminItemActions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    min-width: auto;
+  }
+  
+  .adminItemDetails h4 {
+    font-size: var(--font-size-lg);
+  }
+} 

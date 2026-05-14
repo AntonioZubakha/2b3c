@@ -1,0 +1,2 @@
+# Shell used in Linux containers — CRLF breaks shebang and `set -e` on Windows checkouts.
+*.sh text eol=lf

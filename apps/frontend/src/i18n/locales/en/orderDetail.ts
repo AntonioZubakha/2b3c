@@ -1,0 +1,17 @@
+export const orderDetail = {
+  loading: 'Opening order details…',
+  missingOrder: 'Missing order',
+  loadError: 'Could not load this order.',
+  unavailableTitle: 'Order unavailable',
+  notFound: 'This order could not be found.',
+  backToOrders: 'Back to orders',
+  back: 'Back',
+  orderRef: 'Order reference',
+  placedOn: 'Placed on',
+  total: 'Total',
+  items: 'Items',
+  bespokeMeta: 'Diamond {{diamond}} · setting {{setting}}',
+  shipping: 'Shipping',
+  processingNote: 'Typical processing: 3–5 business days after confirmation.',
+  allOrders: '← All orders',
+};

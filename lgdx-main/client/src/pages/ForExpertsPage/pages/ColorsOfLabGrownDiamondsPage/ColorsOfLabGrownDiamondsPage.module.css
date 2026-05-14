@@ -1,0 +1,177 @@
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.875rem;
+  margin-right: 2.5rem;
+}
+
+.backLink {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.heroSection {
+  padding-top: 8rem;
+  padding-left: 1rem;
+  background-image: url('../../../../assets/images/articles/title.png');
+  background-size: cover;
+  min-height: 380px;
+}
+
+@media (min-width: 1024px) {
+  .heroSection {
+    padding-left: 4rem;
+  }
+}
+
+.heroTitle {
+  color: black;
+  font-weight: 600;
+  font-size: 2.25rem;
+}
+
+@media (min-width: 1024px) {
+  .heroTitle {
+    width: 29.5625rem;
+  }
+}
+
+.content {
+  padding-top: 2rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .content {
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-top: 8rem;
+  }
+}
+
+.paragraph {
+  padding-bottom: 2rem;
+  max-width: none;
+}
+
+.imageRow {
+  display: flex;
+  padding-bottom: 2rem;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .imageRow {
+    flex-direction: row;
+  }
+}
+
+.imageColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .imageColumn {
+    width: 50%;
+  }
+}
+
+.imageColumnRight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .imageColumnRight {
+    width: 50%;
+  }
+}
+
+.link {
+  text-decoration: underline;
+}
+
+.imageMarginTop {
+  margin-top: 2.5rem;
+}
+
+.list {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-left: 2rem;
+}
+
+.listDecimal {
+  list-style-type: decimal;
+  list-style-position: inside;
+  padding-top: 1rem;
+}
+
+.listDecimal > li {
+  margin-bottom: 1rem;
+}
+
+.listDecimal > li:last-child {
+  margin-bottom: 0;
+}
+
+.paragraphTop {
+  padding-top: 2rem;
+  max-width: none;
+}
+
+.imageContainer {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageContainerCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading2 {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  max-width: none;
+}
+
+.imageContainerJustifyCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.paragraphTopLarge {
+  padding-top: 4rem;
+  max-width: none;
+}
+
+.authorSection {
+  padding-top: 4rem;
+  font-style: italic;
+}
+
+.bold {
+  font-weight: 700;
+}

@@ -1,0 +1,227 @@
+﻿/* ==========================================================================
+   UNIFIED LOGIN PAGE
+   Использует централизованную систему design tokens
+   ========================================================================== */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  /* HomePage gradient background - applied globally in body */
+}
+
+.login-container {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-4xl);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: var(--content-width-sm);
+  transition: all var(--transition-normal) var(--ease-in-out);
+}
+
+.login-container:hover {
+  transform: var(--transform-hover-lift-sm);
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-lg);
+}
+
+.login-container h2 {
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.login-form .form-group {
+  margin-bottom: var(--spacing-xl);
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+}
+
+/* Note: Input styles are now handled by the Input component with HomePage glass effect */
+.form-input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-surface-background);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  transition: all var(--transition-normal);
+}
+
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:hover,
+.form-input:-webkit-autofill:focus,
+.form-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--color-surface-elevated) inset;
+  -webkit-text-fill-color: var(--color-text-primary);
+  caret-color: var(--color-text-primary);
+  border-color: var(--color-border-focus);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus);
+}
+
+/* Password field with visibility toggle */
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrap .form-input {
+  padding-right: 3rem;
+}
+
+.password-toggle {
+  position: absolute;
+  right: var(--spacing-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.password-toggle:hover {
+  color: var(--color-text-primary);
+  background: rgba(var(--color-brand-primary-rgb), 0.1);
+}
+
+.password-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-border-focus);
+}
+
+.password-toggle i {
+  font-size: 1.1rem;
+}
+
+.login-button {
+  width: 100%;
+  background: var(--gradient-brand);
+  color: var(--color-text-on-brand);
+  border: 1px solid rgba(var(--color-brand-primary-rgb), 0.48);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-normal) var(--ease-in-out);
+  margin-bottom: var(--spacing-xl);
+  box-shadow: var(--shadow-brand);
+}
+
+.login-button:hover:not(:disabled) {
+  transform: var(--transform-hover-lift-sm);
+  background: var(--gradient-brand);
+  filter: brightness(0.9) saturate(1.08);
+  border-color: rgba(var(--color-brand-primary-rgb), 0.7);
+  box-shadow: var(--shadow-brand-lg);
+}
+
+[data-theme='light'] .login-button {
+  background: var(--gradient-brand);
+  border-color: rgba(163, 155, 184, 0.88);
+  color: #2f3642;
+  box-shadow: var(--shadow-brand);
+}
+
+.login-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  filter: grayscale(0.5);
+}
+
+.error-message {
+  background: rgba(var(--color-danger-rgb), 0.1);
+  border: 2px solid rgba(var(--color-danger-rgb), 0.4);
+  color: var(--color-danger);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-md), var(--shadow-inner);
+}
+
+.register-link {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.register-link a {
+  color: var(--color-brand-primary-900);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  transition: all var(--transition-normal);
+}
+
+.register-link a:hover {
+  color: var(--color-brand-primary-hover);
+  transform: translateX(2px);
+}
+
+.forgot-password {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+.forgot-password a {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+}
+
+.forgot-password a:hover {
+  color: var(--color-brand-primary-900);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: var(--breakpoint-sm)) {
+  .login-page {
+    padding: var(--spacing-md);
+  }
+  
+  .login-container {
+    padding: var(--spacing-3xl) var(--spacing-xl);
+  }
+  
+  .login-container h2 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .login-button {
+    padding: var(--spacing-md);
+  }
+} 

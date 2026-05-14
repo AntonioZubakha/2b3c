@@ -1,0 +1,412 @@
+/* ==========================================================================
+   MODERN BACKGROUND PATTERNS & EFFECTS
+   Subtle, professional backgrounds for premium UX
+   ========================================================================== */
+
+/* ==========================================================================
+   GRADIENT BACKGROUNDS
+   ========================================================================== */
+
+.bg-gradient-primary {
+  background: var(--gradient-brand);
+}
+
+.bg-gradient-light {
+  background: var(--gradient-subtle-1);
+}
+
+.bg-gradient-soft {
+  background: var(--gradient-brand-subtle);
+}
+
+/* Animated gradient background */
+.bg-gradient-animated {
+  background: linear-gradient(
+    135deg,
+    var(--color-brand-primary) 0%,
+    var(--color-brand-primary-light) 50%,
+    var(--color-brand-primary) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* ==========================================================================
+   PATTERN BACKGROUNDS
+   ========================================================================== */
+
+/* Dot grid pattern - Modern, technical look */
+.bg-dot-grid {
+  background-image: 
+    radial-gradient(circle, rgba(var(--color-brand-primary-rgb), 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.bg-dot-grid-sm {
+  background-image: 
+    radial-gradient(circle, rgba(var(--color-brand-primary-rgb), 0.08) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+.bg-dot-grid-lg {
+  background-image: 
+    radial-gradient(circle, rgba(var(--color-brand-primary-rgb), 0.12) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+}
+
+/* Line grid pattern - Clean, structured */
+.bg-line-grid {
+  background-image: 
+    linear-gradient(rgba(var(--color-brand-primary-rgb), 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--color-brand-primary-rgb), 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-line-grid-sm {
+  background-image: 
+    linear-gradient(rgba(var(--color-brand-primary-rgb), 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--color-brand-primary-rgb), 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Diagonal lines - Dynamic, modern */
+.bg-diagonal-lines {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(var(--color-brand-primary-rgb), 0.03) 10px,
+    rgba(var(--color-brand-primary-rgb), 0.03) 11px
+  );
+}
+
+/* Mesh gradient - Trendy, abstract */
+.bg-mesh {
+  background: 
+    radial-gradient(at 27% 37%, rgba(var(--color-brand-primary-rgb), 0.05) 0px, transparent 50%),
+    radial-gradient(at 97% 21%, rgba(var(--color-brand-primary-rgb), 0.07) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, rgba(var(--color-brand-primary-rgb), 0.04) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, rgba(var(--color-brand-primary-rgb), 0.06) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, rgba(var(--color-brand-primary-rgb), 0.05) 0px, transparent 50%);
+}
+
+/* ==========================================================================
+   NOISE & TEXTURE
+   ========================================================================== */
+
+/* Subtle noise texture for depth */
+.bg-noise {
+  position: relative;
+}
+
+.bg-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   SPOTLIGHT EFFECTS
+   ========================================================================== */
+
+/* Radial spotlight - Focus attention */
+.bg-spotlight {
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 50%,
+    transparent 0%,
+    rgba(0, 0, 0, 0.03) 100%
+  );
+}
+
+/* Top spotlight - Header emphasis */
+.bg-spotlight-top {
+  background: radial-gradient(
+    ellipse 100% 40% at 50% 0%,
+    rgba(var(--color-brand-primary-rgb), 0.08) 0%,
+    transparent 60%
+  );
+}
+
+/* ==========================================================================
+   GLASS MORPHISM
+   ========================================================================== */
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   OVERLAY EFFECTS
+   ========================================================================== */
+
+/* Dark overlay for text contrast on images */
+.overlay-dark {
+  position: relative;
+}
+
+.overlay-dark::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Light overlay */
+.overlay-light {
+  position: relative;
+}
+
+.overlay-light::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Gradient overlay for hero sections */
+.overlay-gradient {
+  position: relative;
+}
+
+.overlay-gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--color-brand-primary-rgb), 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   SHIMMER BACKGROUNDS
+   ========================================================================== */
+
+.bg-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   GRADIENT BORDERS
+   ========================================================================== */
+
+.border-gradient {
+  position: relative;
+  background: var(--color-surface-elevated);
+  border: none;
+}
+
+.border-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: var(--gradient-brand);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   DEPTH & ELEVATION
+   ========================================================================== */
+
+/* Inset shadow for depth */
+.depth-inset {
+  box-shadow: var(--shadow-inner);
+}
+
+/* Multiple shadows for realistic elevation */
+.depth-elevated {
+  box-shadow: 
+    0 1px 1px rgba(0, 0, 0, 0.08),
+    0 2px 2px rgba(0, 0, 0, 0.06),
+    0 4px 4px rgba(0, 0, 0, 0.04),
+    0 8px 8px rgba(0, 0, 0, 0.02),
+    0 16px 16px rgba(0, 0, 0, 0.01);
+}
+
+/* Floating effect with shadows */
+.depth-floating {
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================================
+   PREMIUM CARD BACKGROUNDS
+   ========================================================================== */
+
+.bg-card-premium {
+  background: 
+    linear-gradient(
+      135deg,
+      rgba(var(--color-brand-primary-rgb), 0.03) 0%,
+      transparent 50%
+    ),
+    var(--color-surface-elevated);
+}
+
+.bg-card-subtle {
+  background: linear-gradient(
+    180deg,
+    var(--color-surface-background) 0%,
+    var(--color-surface-elevated) 100%
+  );
+}
+
+/* ==========================================================================
+   ANIMATED BACKGROUNDS
+   ========================================================================== */
+
+/* Pulse background */
+@keyframes pulse-bg {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.bg-pulse {
+  animation: pulse-bg 2s ease-in-out infinite;
+}
+
+/* Breathing effect */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.5;
+  }
+}
+
+.bg-breathe {
+  position: relative;
+}
+
+.bg-breathe::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(
+    circle,
+    rgba(var(--color-brand-primary-rgb), 0.3) 0%,
+    transparent 70%
+  );
+  animation: breathe 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ==========================================================================
+   RESPONSIVE BACKGROUNDS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .bg-line-grid,
+  .bg-dot-grid {
+    background-size: 20px 20px;
+  }
+  
+  .glass,
+  .glass-dark,
+  .glass-subtle {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+}
+
+/* ==========================================================================
+   DARK MODE ADJUSTMENTS
+   ========================================================================== */
+
+[data-theme="dark"] .bg-noise::before {
+  opacity: 0.015;
+}
+
+[data-theme="dark"] .glass {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .bg-card-premium {
+  background: 
+    linear-gradient(
+      135deg,
+      rgba(var(--color-brand-primary-rgb), 0.08) 0%,
+      transparent 50%
+    ),
+    var(--color-surface-elevated);
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-gradient-animated,
+  .bg-shimmer::before,
+  .bg-pulse,
+  .bg-breathe::before {
+    animation: none !important;
+  }
+}
+

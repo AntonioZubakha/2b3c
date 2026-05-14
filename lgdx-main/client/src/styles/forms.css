@@ -1,0 +1,602 @@
+﻿/* ==========================================================================
+   ENHANCED FORM STYLES
+   Modern, accessible, and user-friendly form components
+   ========================================================================== */
+
+/* ==========================================================================
+   FORM ELEMENTS BASE
+   ========================================================================== */
+
+/* Form container */
+.form {
+  width: 100%;
+}
+
+/* Form group - wraps label + input */
+.form-group {
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+}
+
+/* ==========================================================================
+   LABELS
+   ========================================================================== */
+
+label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  letter-spacing: 0.01em;
+}
+
+label.required::after {
+  content: ' *';
+  color: var(--color-danger);
+}
+
+/* Floating label */
+.form-floating {
+  position: relative;
+}
+
+.form-floating label {
+  position: absolute;
+  top: 50%;
+  left: var(--spacing-lg);
+  transform: translateY(-50%);
+  transition: all var(--transition-fast) var(--ease-out);
+  pointer-events: none;
+  background: var(--color-surface-background);
+  padding: 0 var(--spacing-xs);
+  color: var(--color-text-tertiary);
+}
+
+.form-floating input:focus + label,
+.form-floating input:not(:placeholder-shown) + label,
+.form-floating textarea:focus + label,
+.form-floating textarea:not(:placeholder-shown) + label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: var(--font-size-xs);
+  color: var(--color-brand-primary-900);
+}
+
+/* ==========================================================================
+   INPUT FIELDS
+   ========================================================================== */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+  width: 100%;
+  font-size: var(--font-size-md);
+  font-family: var(--font-family-primary);
+  color: var(--color-text-primary);
+  background: var(--color-surface-background);
+  border: 2px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-normal) var(--ease-out);
+  outline: none;
+  box-shadow: var(--shadow-xs);
+}
+
+/* Focus state */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-brand-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+/* Hover state */
+input:hover:not(:disabled):not(:focus),
+textarea:hover:not(:disabled):not(:focus),
+select:hover:not(:disabled):not(:focus) {
+  border-color: var(--color-border-focus);
+}
+
+/* Disabled state */
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background: var(--color-surface-hover);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Readonly state */
+input[readonly],
+textarea[readonly] {
+  background: var(--color-surface-elevated);
+  cursor: default;
+}
+
+/* ==========================================================================
+   INPUT SIZES
+   ========================================================================== */
+
+.input-sm {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+  min-height: 36px;
+}
+
+.input-md {
+  /* Default size */
+  min-height: 44px;
+}
+
+.input-lg {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  font-size: var(--font-size-lg);
+  min-height: 52px;
+}
+
+/* ==========================================================================
+   INPUT VALIDATION STATES
+   ========================================================================== */
+
+/* Success state */
+input.is-valid,
+textarea.is-valid,
+select.is-valid {
+  border-color: var(--color-success);
+}
+
+input.is-valid:focus,
+textarea.is-valid:focus,
+select.is-valid:focus {
+  border-color: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(var(--color-success-rgb), 0.15);
+}
+
+/* Error state */
+input.is-invalid,
+textarea.is-invalid,
+select.is-invalid {
+  border-color: var(--color-danger);
+}
+
+input.is-invalid:focus,
+textarea.is-invalid:focus,
+select.is-invalid:focus {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px rgba(var(--color-danger-rgb), 0.15);
+}
+
+/* Warning state */
+input.is-warning,
+textarea.is-warning,
+select.is-warning {
+  border-color: var(--color-warning);
+}
+
+input.is-warning:focus,
+textarea.is-warning:focus,
+select.is-warning:focus {
+  border-color: var(--color-warning);
+  box-shadow: 0 0 0 3px rgba(var(--color-warning-rgb), 0.15);
+}
+
+/* ==========================================================================
+   FEEDBACK MESSAGES
+   ========================================================================== */
+
+.form-feedback {
+  display: block;
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+}
+
+.form-feedback.success {
+  color: var(--color-success);
+}
+
+.form-feedback.error {
+  color: var(--color-danger);
+}
+
+.form-feedback.warning {
+  color: var(--color-warning);
+}
+
+.form-feedback.info {
+  color: var(--color-info);
+}
+
+/* Form helper text */
+.form-help {
+  display: block;
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-normal);
+}
+
+/* ==========================================================================
+   TEXTAREA
+   ========================================================================== */
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: var(--line-height-relaxed);
+}
+
+textarea.no-resize {
+  resize: none;
+}
+
+/* ==========================================================================
+   SELECT
+   ========================================================================== */
+
+select {
+  appearance: none;
+  background-image: none;
+  cursor: pointer;
+}
+
+select:focus {
+  background-image: none;
+}
+
+/* ==========================================================================
+   CHECKBOX & RADIO
+   ========================================================================== */
+
+/* Hide default checkbox/radio */
+input[type="checkbox"],
+input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border-primary);
+  background: var(--color-surface-background);
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  flex-shrink: 0;
+  transition: all var(--transition-normal) var(--ease-out);
+}
+
+input[type="checkbox"] {
+  border-radius: var(--radius-sm);
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+/* Checked state */
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background: var(--color-brand-primary);
+  border-color: var(--color-brand-primary);
+}
+
+/* Checkmark */
+input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Radio dot */
+input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+}
+
+/* Focus state */
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+  border-color: var(--color-brand-primary);
+  box-shadow: var(--shadow-focus);
+}
+
+/* Checkbox/Radio label wrapper */
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  cursor: pointer;
+}
+
+.form-check input {
+  margin: 0;
+}
+
+.form-check label {
+  margin: 0;
+  font-weight: var(--font-weight-normal);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ==========================================================================
+   SWITCH / TOGGLE
+   ========================================================================== */
+
+.form-switch {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  cursor: pointer;
+}
+
+.form-switch input[type="checkbox"] {
+  appearance: none;
+  width: 44px;
+  height: 24px;
+  background: var(--color-neutral-300);
+  border-radius: var(--radius-full);
+  position: relative;
+  cursor: pointer;
+  transition: background var(--transition-normal) var(--ease-out);
+  border: none;
+}
+
+.form-switch input[type="checkbox"]::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: transform var(--transition-normal) var(--ease-out);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-switch input[type="checkbox"]:checked {
+  background: var(--color-brand-primary);
+}
+
+.form-switch input[type="checkbox"]:checked::after {
+  transform: translateX(20px);
+}
+
+.form-switch label {
+  margin: 0;
+  font-weight: var(--font-weight-normal);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   INPUT GROUPS
+   ========================================================================== */
+
+.input-group {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  position: relative;
+}
+
+.input-group input {
+  flex: 1;
+  border-radius: 0;
+}
+
+.input-group input:first-child {
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.input-group input:last-child {
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+}
+
+.input-group-text {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-surface-elevated);
+  border: 2px solid var(--color-border-primary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+
+.input-group-text:first-child {
+  border-top-left-radius: var(--radius-md);
+  border-bottom-left-radius: var(--radius-md);
+  border-right: none;
+}
+
+.input-group-text:last-child {
+  border-top-right-radius: var(--radius-md);
+  border-bottom-right-radius: var(--radius-md);
+  border-left: none;
+}
+
+/* ==========================================================================
+   FILE INPUT
+   ========================================================================== */
+
+input[type="file"] {
+  padding: var(--spacing-md);
+}
+
+input[type="file"]::file-selector-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  margin-right: var(--spacing-lg);
+  background: var(--color-brand-primary);
+  color: var(--color-text-on-brand);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-normal) var(--ease-out);
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: var(--color-brand-primary-hover);
+}
+
+/* ==========================================================================
+   RANGE SLIDER
+   ========================================================================== */
+
+input[type="range"] {
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--color-neutral-200);
+  border-radius: var(--radius-full);
+  outline: none;
+  padding: 0;
+  margin: var(--spacing-lg) 0;
+  border: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--color-brand-primary);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--transition-normal) var(--ease-out);
+  box-shadow: var(--shadow-sm);
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--color-brand-primary-hover);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--color-brand-primary);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--transition-normal) var(--ease-out);
+  box-shadow: var(--shadow-sm);
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: var(--color-brand-primary-hover);
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
+}
+
+/* ==========================================================================
+   FORM LAYOUTS
+   ========================================================================== */
+
+/* Inline form */
+.form-inline {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.form-inline .form-group {
+  margin-bottom: 0;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Grid form */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-xl);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .form-inline .form-group {
+    width: 100%;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .input-lg {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-md);
+  }
+}
+
+/* ==========================================================================
+   DARK MODE
+   ========================================================================== */
+
+[data-theme="dark"] select {
+  background-image: none;
+}
+
+[data-theme="dark"] select:focus {
+  background-image: none;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+/* Ensure all interactive elements have proper focus */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
+}
+
+/* ==========================================================================
+   PRINT
+   ========================================================================== */
+
+@media print {
+  input,
+  textarea,
+  select {
+    border: 1px solid var(--color-border-primary);
+    box-shadow: none;
+  }
+}
+

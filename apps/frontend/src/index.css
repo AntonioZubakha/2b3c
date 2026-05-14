@@ -1,0 +1,607 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* ============================================================
+   DARK MODE VARIANT
+   We toggle theme via [data-theme="dark"] on <html>, so utility
+   classes can do `dark:bg-surface-soft` etc.
+   ============================================================ */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ============================================================
+   THEME TOKENS — semantic, theme-aware
+   `@theme inline` makes Tailwind generate utilities that reference
+   the underlying CSS variables; flipping the theme just swaps
+   variable values, no class swap needed.
+   ============================================================ */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-soft: var(--surface-soft);
+  --color-surface-elev: var(--surface-elev);
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ash: var(--ash);
+  --color-ash-soft: var(--ash-soft);
+
+  --color-cream-50: var(--cream-50);
+  --color-cream-100: var(--cream-100);
+  --color-cream-200: var(--cream-200);
+
+  --color-blush-50: var(--blush-50);
+  --color-blush-100: var(--blush-100);
+  --color-blush-200: var(--blush-200);
+  --color-blush-300: var(--blush-300);
+  --color-blush-400: var(--blush-400);
+
+  --color-rose-gold: var(--rose-gold);
+  --color-rose-gold-deep: var(--rose-gold-deep);
+  --color-champagne: var(--champagne);
+  --color-mauve: var(--mauve);
+
+  --color-border-soft: var(--border-soft);
+  --color-border-strong: var(--border-strong);
+
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
+}
+
+/* ============================================================
+   LIGHT THEME — "Pearl & Blush"
+   ============================================================ */
+:root {
+  --surface: #fdfaf6;
+  --surface-soft: #faf5ee;
+  --surface-elev: #ffffff;
+
+  --ink: #2b2024;
+  --ink-soft: #4a3b40;
+  --ash: #8b7e74;
+  --ash-soft: #b8aca2;
+
+  --cream-50: #fdfaf6;
+  --cream-100: #faf5ee;
+  --cream-200: #f3ebde;
+
+  --blush-50: #fef6f2;
+  --blush-100: #fde6dd;
+  --blush-200: #f9cfbf;
+  --blush-300: #f3b29c;
+  --blush-400: #ea947a;
+
+  --rose-gold: #cf9a85;
+  --rose-gold-deep: #b07c66;
+  --champagne: #e7d3b3;
+  --mauve: #b88e9a;
+
+  --border-soft: rgba(176, 124, 102, 0.14);
+  --border-strong: rgba(176, 124, 102, 0.28);
+
+  --shadow-card: 0 18px 48px rgba(176, 124, 102, 0.10);
+  --shadow-card-hover: 0 28px 70px rgba(207, 154, 133, 0.18);
+  --shadow-bloom: 0 32px 80px rgba(207, 154, 133, 0.18);
+  --shadow-button: 0 6px 18px rgba(207, 154, 133, 0.12);
+  --shadow-button-hover: 0 12px 28px rgba(207, 154, 133, 0.22);
+  --shadow-cta: 0 14px 34px rgba(207, 154, 133, 0.30);
+
+  --orb-1: rgba(249, 207, 191, 0.55);
+  --orb-2: rgba(231, 211, 179, 0.45);
+  --orb-3: rgba(184, 142, 154, 0.25);
+
+  --bg-gradient:
+    radial-gradient(circle at 18% 12%, rgba(249, 207, 191, 0.45), transparent 55%),
+    radial-gradient(circle at 82% 8%, rgba(231, 211, 179, 0.40), transparent 50%),
+    radial-gradient(circle at 50% 92%, rgba(184, 142, 154, 0.18), transparent 60%);
+}
+
+/* ============================================================
+   DARK THEME — "Mocha & Rose-Gold"
+   Not black. Deep warm mocha, cream type, rose-gold accents.
+   ============================================================ */
+[data-theme="dark"] {
+  --surface: #1a1419;
+  --surface-soft: #221a1f;
+  --surface-elev: #2a2028;
+
+  --ink: #f3ebde;
+  --ink-soft: #d8c8bc;
+  --ash: #9b8c83;
+  --ash-soft: #6e635c;
+
+  /* "cream" tokens stay readable on dark — used for subtle surfaces. */
+  --cream-50: #221a1f;
+  --cream-100: #2a2028;
+  --cream-200: #382a32;
+
+  --blush-50: #2c2027;
+  --blush-100: #3a2a32;
+  --blush-200: #4d3a42;
+  --blush-300: #6a4f57;
+  --blush-400: #8f6b6f;
+
+  --rose-gold: #e0b09c;
+  --rose-gold-deep: #cf9a85;
+  --champagne: #d4bb96;
+  --mauve: #c69dab;
+
+  --border-soft: rgba(243, 235, 222, 0.10);
+  --border-strong: rgba(243, 235, 222, 0.20);
+
+  --shadow-card: 0 18px 48px rgba(0, 0, 0, 0.40);
+  --shadow-card-hover: 0 28px 70px rgba(0, 0, 0, 0.55);
+  --shadow-bloom: 0 32px 80px rgba(0, 0, 0, 0.55);
+  --shadow-button: 0 6px 18px rgba(0, 0, 0, 0.35);
+  --shadow-button-hover: 0 12px 28px rgba(0, 0, 0, 0.50);
+  --shadow-cta: 0 14px 34px rgba(207, 154, 133, 0.45);
+
+  --orb-1: rgba(207, 154, 133, 0.20);
+  --orb-2: rgba(184, 142, 154, 0.18);
+  --orb-3: rgba(212, 187, 150, 0.14);
+
+  --bg-gradient:
+    radial-gradient(circle at 18% 12%, rgba(207, 154, 133, 0.18), transparent 55%),
+    radial-gradient(circle at 82% 8%, rgba(184, 142, 154, 0.18), transparent 50%),
+    radial-gradient(circle at 50% 92%, rgba(212, 187, 150, 0.10), transparent 60%);
+}
+
+/* Auto-pick theme from system preference if no explicit choice yet. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --surface: #1a1419;
+    --surface-soft: #221a1f;
+    --surface-elev: #2a2028;
+    --ink: #f3ebde;
+    --ink-soft: #d8c8bc;
+    --ash: #9b8c83;
+    --ash-soft: #6e635c;
+    --cream-50: #221a1f;
+    --cream-100: #2a2028;
+    --cream-200: #382a32;
+    --blush-50: #2c2027;
+    --blush-100: #3a2a32;
+    --blush-200: #4d3a42;
+    --blush-300: #6a4f57;
+    --blush-400: #8f6b6f;
+    --rose-gold: #e0b09c;
+    --rose-gold-deep: #cf9a85;
+    --border-soft: rgba(243, 235, 222, 0.10);
+    --border-strong: rgba(243, 235, 222, 0.20);
+    --shadow-card: 0 18px 48px rgba(0, 0, 0, 0.40);
+    --shadow-card-hover: 0 28px 70px rgba(0, 0, 0, 0.55);
+    --shadow-bloom: 0 32px 80px rgba(0, 0, 0, 0.55);
+    --shadow-cta: 0 14px 34px rgba(207, 154, 133, 0.45);
+    --orb-1: rgba(207, 154, 133, 0.20);
+    --orb-2: rgba(184, 142, 154, 0.18);
+    --orb-3: rgba(212, 187, 150, 0.14);
+    --bg-gradient:
+      radial-gradient(circle at 18% 12%, rgba(207, 154, 133, 0.18), transparent 55%),
+      radial-gradient(circle at 82% 8%, rgba(184, 142, 154, 0.18), transparent 50%),
+      radial-gradient(circle at 50% 92%, rgba(212, 187, 150, 0.10), transparent 60%);
+  }
+}
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
+@layer base {
+  html, body {
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--ink);
+    background-color: var(--surface);
+    background-image: var(--bg-gradient);
+    background-attachment: fixed;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  ::selection {
+    background-color: var(--blush-200);
+    color: var(--ink);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+}
+
+/* ============================================================
+   UTILITY CLASSES — theme-aware
+   ============================================================ */
+@layer utilities {
+  /* Subtle paper-like surface */
+  .glass {
+    backdrop-filter: blur(10px);
+    background-color: color-mix(in srgb, var(--surface-elev) 75%, transparent);
+    border: 1px solid var(--border-soft);
+    box-shadow: var(--shadow-button);
+  }
+
+  .glass-card {
+    backdrop-filter: blur(10px);
+    background-color: color-mix(in srgb, var(--surface-elev) 88%, transparent);
+    border: 1px solid var(--border-soft);
+    border-radius: 1.75rem;
+    box-shadow: var(--shadow-card);
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease, transform 0.5s ease;
+  }
+  .glass-card:hover {
+    background-color: var(--surface-elev);
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--border-strong);
+  }
+
+  .glass-card-premium {
+    /* Do not set position here — it overrides Tailwind `absolute` on the same node
+       (e.g. account dropdown in Navbar) and forces the menu into document flow. */
+    overflow: hidden;
+    background-image: linear-gradient(135deg, var(--surface-elev), var(--blush-50) 50%, var(--cream-100));
+    border: 1px solid var(--border-soft);
+    border-radius: 2.5rem;
+    box-shadow: var(--shadow-bloom);
+  }
+
+  .glass-button {
+    background-color: color-mix(in srgb, var(--surface-elev) 90%, transparent);
+    border: 1px solid var(--border-strong);
+    color: var(--ink);
+    border-radius: 9999px;
+    box-shadow: var(--shadow-button);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .glass-button:hover {
+    background-color: var(--blush-50);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-button-hover);
+  }
+  .glass-button:active { transform: scale(0.97); }
+
+  .glass-input {
+    background-color: color-mix(in srgb, var(--surface-elev) 88%, transparent);
+    border: 1px solid var(--cream-200);
+    color: var(--ink);
+    border-radius: 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    /* Explicit caret + I-beam: avoids “missing cursor” over inputs inside
+       `.glass-card` with `backdrop-filter` (Chrome/Windows compositing). */
+    cursor: text;
+    caret-color: var(--rose-gold-deep);
+    transform: translateZ(0);
+  }
+  .glass-input:disabled {
+    cursor: not-allowed;
+    opacity: 0.88;
+  }
+  select.glass-input {
+    cursor: pointer;
+  }
+  .glass-input::placeholder { color: var(--ash); }
+  .glass-input:focus {
+    outline: none;
+    border-color: var(--rose-gold);
+    background-color: var(--surface-elev);
+  }
+
+  /* Primary CTA — solid rose-gold pill, works in both themes */
+  .btn-primary {
+    background-color: var(--rose-gold);
+    color: #ffffff;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: var(--shadow-cta);
+  }
+  .btn-primary:hover {
+    background-color: var(--rose-gold-deep);
+    box-shadow: 0 20px 44px rgba(176, 124, 102, 0.36);
+  }
+  .btn-primary:disabled {
+    background-color: color-mix(in srgb, var(--rose-gold) 50%, var(--surface-soft));
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* Headline gradient */
+  .text-gradient {
+    background-image: linear-gradient(90deg, var(--rose-gold), var(--mauve), var(--rose-gold-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    /* italic glyphs (e.g. the tail of "l") spill past the layout box and
+       get clipped by `background-clip: text`. inline-block + a sliver of
+       right padding gives the descender room to render. */
+    display: inline-block;
+    padding-right: 0.08em;
+  }
+
+  .text-gradient-gold {
+    background-image: linear-gradient(90deg, var(--champagne), var(--rose-gold), var(--rose-gold-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 500;
+    display: inline-block;
+    padding-right: 0.08em;
+  }
+
+  /* Status badges — readable in both themes via theme-aware colors */
+  .badge-best {
+    background-color: color-mix(in srgb, #10b981 14%, transparent);
+    color: color-mix(in srgb, #047857 100%, var(--ink) 0%);
+    border: 1px solid color-mix(in srgb, #10b981 32%, transparent);
+  }
+  [data-theme="dark"] .badge-best { color: #6ee7b7; }
+
+  .badge-fair {
+    background-color: var(--blush-50);
+    color: var(--rose-gold-deep);
+    border: 1px solid color-mix(in srgb, var(--rose-gold) 35%, transparent);
+  }
+  [data-theme="dark"] .badge-fair { color: var(--rose-gold); }
+
+  .badge-premium {
+    background-color: color-mix(in srgb, var(--mauve) 18%, transparent);
+    color: var(--mauve);
+    border: 1px solid color-mix(in srgb, var(--mauve) 35%, transparent);
+  }
+  [data-theme="dark"] .badge-premium { color: #d6a9b8; }
+
+  /*
+   * Merchant dashboard — status & “Live” pills.
+   * Dark: low-luminance tints on surface (no neon emerald / traffic-light yellow).
+   * Light: same structure, slightly richer pastels.
+   */
+  .merchant-pill-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    padding: 0.22rem 0.55rem;
+    border-radius: 9999px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    color: color-mix(in srgb, var(--ash) 35%, #5d9c7a 65%);
+    background: color-mix(in srgb, var(--surface-elev) 94%, rgba(93, 156, 122, 0.12));
+    border-color: color-mix(in srgb, var(--border-strong) 72%, rgba(93, 156, 122, 0.22));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .merchant-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.38rem 0.72rem;
+    border-radius: 9999px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .merchant-status-pending {
+    color: color-mix(in srgb, var(--ink-soft) 38%, #c9a57a 62%);
+    background: color-mix(in srgb, var(--surface-elev) 93%, rgba(201, 165, 122, 0.14));
+    border-color: color-mix(in srgb, var(--border-strong) 78%, rgba(201, 165, 122, 0.26));
+  }
+
+  .merchant-status-confirmed,
+  .merchant-status-paid {
+    color: color-mix(in srgb, var(--ink-soft) 32%, #8fb5a5 68%);
+    background: color-mix(in srgb, var(--surface-elev) 92%, rgba(120, 160, 145, 0.11));
+    border-color: color-mix(in srgb, var(--border-strong) 74%, rgba(120, 160, 145, 0.2));
+  }
+
+  .merchant-status-shipped,
+  .merchant-status-delivered {
+    color: color-mix(in srgb, var(--ink-soft) 28%, var(--mauve) 72%);
+    background: color-mix(in srgb, var(--surface-elev) 92%, rgba(198, 157, 171, 0.1));
+    border-color: color-mix(in srgb, var(--border-strong) 72%, rgba(198, 157, 171, 0.22));
+  }
+
+  .merchant-status-cancelled {
+    color: color-mix(in srgb, var(--ink-soft) 42%, #c49a9a 58%);
+    background: color-mix(in srgb, var(--surface-elev) 93%, rgba(196, 154, 154, 0.12));
+    border-color: color-mix(in srgb, var(--border-strong) 76%, rgba(196, 154, 154, 0.24));
+  }
+
+  /* Explicit dark toggle: pull luminance down (no mint / butter slabs). */
+  [data-theme="dark"] .merchant-pill-live {
+    color: color-mix(in srgb, var(--ink-soft) 72%, #8aab9c 28%);
+    background: color-mix(in srgb, var(--surface-elev) 97%, rgba(130, 168, 150, 0.06));
+    border-color: color-mix(in srgb, var(--border-soft) 88%, rgba(130, 168, 150, 0.14));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  [data-theme="dark"] .merchant-status-pending {
+    color: color-mix(in srgb, var(--ink-soft) 68%, #b89a78 32%);
+    background: color-mix(in srgb, var(--surface-elev) 97%, rgba(184, 154, 120, 0.05));
+    border-color: color-mix(in srgb, var(--border-soft) 90%, rgba(184, 154, 120, 0.12));
+  }
+
+  [data-theme="dark"] .merchant-status-confirmed,
+  [data-theme="dark"] .merchant-status-paid {
+    color: color-mix(in srgb, var(--ink-soft) 62%, #8aa99a 38%);
+    background: color-mix(in srgb, var(--surface-elev) 97%, rgba(110, 145, 130, 0.05));
+    border-color: color-mix(in srgb, var(--border-soft) 88%, rgba(110, 145, 130, 0.12));
+  }
+
+  [data-theme="dark"] .merchant-status-shipped,
+  [data-theme="dark"] .merchant-status-delivered {
+    color: color-mix(in srgb, var(--ink-soft) 58%, #b89aab 42%);
+    background: color-mix(in srgb, var(--surface-elev) 97%, rgba(170, 130, 150, 0.05));
+    border-color: color-mix(in srgb, var(--border-soft) 88%, rgba(170, 130, 150, 0.12));
+  }
+
+  [data-theme="dark"] .merchant-status-cancelled {
+    color: color-mix(in srgb, var(--ink-soft) 70%, #b09090 30%);
+    background: color-mix(in srgb, var(--surface-elev) 97%, rgba(170, 130, 130, 0.05));
+    border-color: color-mix(in srgb, var(--border-soft) 90%, rgba(170, 130, 130, 0.12));
+  }
+
+  .petal-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--rose-gold) 40%, transparent), transparent);
+  }
+}
+
+/* ============================================================
+   AMBIENT BACKGROUND ORBS
+   ============================================================ */
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(110px);
+  z-index: -1;
+  opacity: 0.55;
+  animation: drift 24s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+.orb-1 { width: 540px; height: 540px; background: var(--orb-1); top: -8%; left: -8%; animation-delay: 0s; }
+.orb-2 { width: 620px; height: 620px; background: var(--orb-2); bottom: -16%; right: -10%; animation-delay: -6s; }
+.orb-3 { width: 460px; height: 460px; background: var(--orb-3); top: 38%; left: 32%; animation-delay: -12s; }
+
+@keyframes drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(40px, -40px) scale(1.08); }
+  100% { transform: translate(-30px, 40px) scale(0.94); }
+}
+
+/* ============================================================
+   SHIMMER (loading skeleton)
+   ============================================================ */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-loading {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--rose-gold) 6%, transparent) 25%,
+    color-mix(in srgb, var(--rose-gold) 16%, transparent) 50%,
+    color-mix(in srgb, var(--rose-gold) 6%, transparent) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+}
+
+/* ============================================================
+   SCORE RING
+   ============================================================ */
+@keyframes score-fill {
+  from { stroke-dashoffset: 282.74; }
+}
+
+.score-ring-animated circle.score-value {
+  animation: score-fill 1.2s ease-out forwards;
+}
+
+/* ============================================================
+   PAGE TRANSITIONS
+   ============================================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+
+/* ============================================================
+   STEPPER (used by /craft flow)
+   ============================================================ */
+.step-dot {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid var(--border-soft);
+  background-color: color-mix(in srgb, var(--surface-elev) 70%, transparent);
+  color: var(--ash-soft);
+  transition: all 0.3s ease;
+}
+.step-dot-active {
+  background-color: var(--rose-gold);
+  color: #ffffff;
+  border-color: var(--rose-gold);
+  box-shadow: 0 8px 22px rgba(207, 154, 133, 0.35);
+}
+.step-dot-done {
+  background-color: var(--surface-elev);
+  color: var(--rose-gold);
+  border-color: var(--rose-gold);
+}
+.step-dot-todo {
+  background-color: color-mix(in srgb, var(--surface-elev) 70%, transparent);
+  color: var(--ash-soft);
+  border-color: var(--cream-200);
+}
+.step-bar {
+  height: 1px;
+  flex: 1;
+  margin: 0 0.75rem;
+  background: linear-gradient(90deg, var(--cream-200), color-mix(in srgb, var(--rose-gold) 30%, transparent), var(--cream-200));
+}
+
+/* ============================================================
+   PRODUCT CARDS & WISHLIST (luxury retail polish)
+   ============================================================ */
+.product-card-lift {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+}
+.product-card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 22px 48px rgba(43, 32, 36, 0.08),
+    0 0 0 1px color-mix(in srgb, var(--rose-gold) 12%, transparent);
+}
+
+.wishlist-heart-btn:focus-visible {
+  outline: 2px solid var(--rose-gold);
+  outline-offset: 2px;
+}
+
+@keyframes wishlist-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+.wishlist-heart-btn:active {
+  animation: wishlist-pop 0.35s ease;
+}

@@ -1,0 +1,304 @@
+/* ==========================================================================
+   UNIFIED INPUT COMPONENT
+   Использует централизованную систему design tokens
+   ========================================================================== */
+
+.inputWrapper {
+  width: 100%;
+  position: relative;
+  margin-bottom: var(--spacing-md);
+}
+
+.inputInner {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* ==========================================================================
+   LABEL STYLES
+   ========================================================================== */
+
+.inputLabel {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+}
+
+.input {
+  /* Layout */
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  
+  /* Spacing - используем токены */
+  padding: var(--input-padding);
+  
+  /* Typography */
+  font-size: var(--font-size-md);
+  font-family: var(--font-family-primary);
+  line-height: 1.5;
+  
+  /* Borders & Shape */
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-primary);
+  
+  /* Appearance */
+  background: linear-gradient(180deg, var(--color-surface-elevated) 0%, var(--color-surface-elev-1) 100%);
+  color: var(--color-text-primary);
+  
+  /* Transitions */
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Icons/Addons */
+.leftIcon {
+  position: absolute;
+  left: var(--spacing-md);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.rightAddon {
+  position: absolute;
+  right: var(--spacing-md);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Password visibility toggle (eye icon) */
+.passwordToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.passwordToggle:hover {
+  color: var(--color-text-primary);
+  background: rgba(var(--color-brand-primary-rgb), 0.1);
+}
+
+.passwordToggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-border-focus);
+}
+
+.passwordToggle i {
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.withLeft {
+  padding-left: calc(var(--input-padding) + 56px);
+}
+
+.withRight {
+  padding-right: calc(var(--input-padding) + 56px);
+}
+
+/* Ensure left/right paddings override size-specific padding */
+.input.lg.withLeft {
+  padding-left: calc(var(--spacing-xl) + 56px);
+}
+
+.input.lg.withRight {
+  padding-right: calc(var(--spacing-xl) + 56px);
+}
+
+/* Size-specific positioning for icon/addon */
+.sizeLg .leftIcon {
+  left: var(--spacing-lg);
+  font-size: 1.4rem;
+}
+
+.sizeLg .rightAddon {
+  right: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus), var(--shadow-sm);
+}
+
+.input:hover:not(:disabled):not(:focus) {
+  border-color: var(--color-border-secondary);
+  box-shadow: var(--shadow-xs);
+}
+
+.input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.input:disabled {
+  background-color: var(--color-surface-hover);
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   INPUT VARIANTS & STATES
+   ========================================================================== */
+
+/* Error state */
+.input.error {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px rgba(var(--color-danger-rgb), 0.1);
+}
+
+.input.error:focus {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px rgba(var(--color-danger-rgb), 0.2);
+}
+
+/* Success state */
+.input.success {
+  border-color: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(var(--color-success-rgb), 0.1);
+}
+
+.input.success:focus {
+  border-color: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(var(--color-success-rgb), 0.2);
+}
+
+/* ==========================================================================
+   SIZE VARIANTS
+   ========================================================================== */
+
+.input.sm {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
+
+.input.lg {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  font-size: var(--font-size-lg);
+}
+
+/* ==========================================================================
+   HELPER & ERROR TEXT
+   ========================================================================== */
+
+.helperText,
+.errorText {
+  display: block;
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-xs);
+  line-height: 1.4;
+}
+
+.helperText {
+  color: var(--color-text-secondary);
+}
+
+.errorText {
+  color: var(--color-danger);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ==========================================================================
+   AUTOFILL HANDLING
+   ========================================================================== */
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus,
+.input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--color-surface-elevated) inset !important;
+  -webkit-text-fill-color: var(--color-text-primary) !important;
+  caret-color: var(--color-text-primary);
+  border-color: var(--color-border-focus) !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .input {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* --- File Input Specific Styles --- */
+.fileInputContainer {
+  position: relative;
+  width: 100%;
+  height: 48px; /* Fixed height for file input */
+}
+
+.fileInput {
+  /* Hide the default input but keep it accessible */
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.fileInputLabel {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-elevated);
+  cursor: pointer;
+  transition: border-color var(--transition-normal);
+  padding-left: 0;
+  overflow: hidden;
+}
+
+.fileInputLabel:hover {
+  border-color: var(--color-border-focus);
+}
+
+.fileInput:focus + .fileInputLabel {
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus);
+}
+
+.fileInputButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 var(--spacing-md);
+  background-color: var(--color-surface-hover);
+  border-right: 1px solid var(--color-border-primary);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.fileName {
+  padding: 0 var(--spacing-md);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+} 

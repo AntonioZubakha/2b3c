@@ -1,0 +1,44 @@
+﻿@import './styles/tokens.css';
+@import './styles/typography.css';
+@import './styles/utilities.css';
+@import './styles/backgrounds.css';
+@import './styles/forms.css';
+@import './styles/accessibility.css';
+@import './styles/animations.css';
+@import './styles/homepage-theme.css';
+
+/* Prevent horizontal scroll on mobile - everything fits viewport width */
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--gradient-silk-bg);
+  background-attachment: fixed;
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+code {
+  font-family: var(--font-family-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: var(--color-brand-primary-900);
+  text-decoration: none;
+  transition: color var(--transition-normal) var(--ease-in-out);
+}
+
+a:hover {
+  color: var(--color-brand-primary-hover);
+}

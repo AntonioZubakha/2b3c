@@ -1,0 +1,38 @@
+# Secrets & local env
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# Logs & caches
+*.log
+npm-debug.log*
+pnpm-debug.log*
+.eslintcache
+.cache/
+.vite/
+
+# Test / coverage
+coverage/
+.nyc_output/
+
+# OS & editors
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Optional: uncomment if you use worktrees / temp
+# .git/worktrees/

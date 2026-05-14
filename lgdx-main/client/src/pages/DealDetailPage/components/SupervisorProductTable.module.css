@@ -1,0 +1,213 @@
+/* ==========================================================================
+   UNIFIED SUPERVISOR PRODUCT TABLE COMPONENT
+   Использует централизованную систему design tokens
+   ========================================================================== */
+
+.productTableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.productTable {
+  width: 100%;
+  min-width: 800px; /* Ensure horizontal scroll on small screens */
+  border-collapse: collapse;
+}
+
+.productTable th,
+.productTable td {
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-align: left;
+  vertical-align: middle;
+  border: 1px solid var(--color-border-primary);
+}
+
+/* Column width helpers to replace inline styles */
+.colProductMain { width: 40%; }
+.colProductSupervisor { width: 25%; }
+.colSupplierMain { width: 20%; }
+.colSupplierSupervisor { width: 15%; }
+.colStatus { width: 10%; }
+.colCertificateMain { width: 20%; }
+.colCertificateSupervisor { width: 15%; }
+.colPrice { width: 10%; }
+.colShipping { width: 10%; }
+.colAction { width: 15%; }
+
+/* Supervisor overview fixed widths */
+.colSupProduct { width: 20%; }
+.colSupSupplier { width: 12%; }
+.colSupStatus { width: 10%; }
+.colSupCert { width: 12%; }
+.colSupPurchase { width: 9%; }
+.colSupSale { width: 9%; }
+.colSupShipSupp { width: 9%; }
+.colSupShipBuyer { width: 9%; }
+.colSupAction { width: 10%; }
+
+.productTable th {
+  background-color: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.productTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.productTable tbody tr:hover {
+  background-color: var(--color-surface-secondary);
+}
+
+.mainProductRow {
+  background-color: rgba(var(--color-brand-primary-rgb), 0.1);
+  border-left: 4px solid var(--color-brand-primary);
+}
+
+.mainProductRow:hover {
+  background-color: rgba(var(--color-brand-primary-rgb), 0.15) !important;
+}
+
+.alternativeProductRow {
+  background-color: rgba(var(--color-brand-secondary-rgb), 0.05);
+  border-left: 4px solid var(--color-brand-secondary);
+}
+
+.alternativeProductRow:hover {
+  background-color: rgba(var(--color-brand-secondary-rgb), 0.1) !important;
+}
+
+.alternativeProductRow.pending {
+  background-color: rgba(255, 193, 7, 0.15); /* --color-warning with opacity */
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+}
+
+.alternativeProductRow.pending:hover {
+  background-color: rgba(255, 193, 7, 0.2);
+}
+
+.alternativeProductRow.noDeal {
+    background-color: rgba(244, 67, 54, 0.1); /* --color-danger with opacity */
+    cursor: not-allowed;
+}
+
+
+.productImage {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-primary);
+}
+
+.productDescription {
+  display: flex;
+  flex-direction: column;
+}
+
+.productName {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+.productSku {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.actionsCell {
+  text-align: right;
+}
+
+.statusCell {
+  text-align: center;
+}
+
+.productBadge {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+}
+
+.mainProductBadge {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-brand);
+}
+
+.alternativeProductBadge {
+  background-color: var(--color-brand-secondary);
+  color: var(--color-text-on-brand);
+}
+
+.productCell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.totalRow td {
+  font-weight: var(--font-weight-bold);
+  background-color: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+  border-top: 2px solid var(--color-border-secondary);
+}
+
+.priceHighlight {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.selectButton {
+  /* Uses the global Button component styles */
+}
+
+.pendingButton {
+  /* Uses the global Button component styles but with specific icon */
+}
+/* ==========================================================================
+   UNIFIED SUPERVISOR PRODUCT TABLE COMPONENT
+   Использует централизованную систему design tokens
+   ========================================================================== */
+
+.unpairedRow {
+  background-color: rgba(var(--color-danger-rgb), 0.05);
+  border-left: 4px solid var(--color-danger);
+}
+
+.supplierInfo {
+  font-style: italic;
+  color: var(--color-text-secondary);
+}
+
+.mainProductSelected {
+  background-color: var(--color-success) !important;
+  border-color: var(--color-success) !important;
+  color: white !important;
+}
+
+.mainProductSelected:hover:not(:disabled) {
+  background-color: var(--color-success-hover) !important;
+  border-color: var(--color-success-hover) !important;
+}
+
+.shippingLabel {
+  display: block;
+  font-size: 0.8em;
+  color: var(--color-text-secondary);
+  opacity: 0.8;
+} 

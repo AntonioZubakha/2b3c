@@ -1,0 +1,119 @@
+.category-stats-page {
+  min-height: 100vh;
+  background: transparent;
+  padding: var(--spacing-3xl) 0;
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: var(--radius-xl);
+}
+
+.page-header {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.page-header h1 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
+}
+
+.page-description {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  max-width: 800px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.custom-tabs {
+  margin-bottom: var(--spacing-xl);
+}
+
+.tab-buttons {
+  display: flex;
+  border-bottom: 1px solid var(--color-border-primary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.tab-button {
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-xl);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  margin-right: var(--spacing-xs);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.tab-button:hover:not(:disabled) {
+  color: var(--color-brand-primary-900);
+  background-color: rgba(var(--color-brand-primary-rgb), 0.08);
+}
+
+.tab-button.active {
+  color: var(--color-text-on-brand);
+  background-color: var(--color-brand-primary-900);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.tab-button:disabled {
+  color: var(--color-neutral-medium);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.tab-content-container {
+  padding: var(--spacing-xl) 0;
+}
+
+.tab-content-container.visual-analytics {
+  padding: 0;
+  background: transparent;
+}
+
+/* Visual Analytics specific styles */
+.visual-analytics-container {
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+/* Enhanced page layout for visual analytics */
+.page-description {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  max-width: 800px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: var(--line-height-relaxed);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .category-stats-page {
+    width: 100%;
+    padding: var(--spacing-lg) 0;
+  }
+  .page-header {
+    padding: 0 var(--spacing-lg);
+  }
+  .page-description {
+    padding: 0 var(--spacing-lg);
+  }
+  .tab-buttons {
+    overflow-x: auto;
+  }
+  .tab-content-container {
+    width: 100%;
+    padding: var(--spacing-md) 0;
+  }
+}

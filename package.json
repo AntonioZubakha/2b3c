@@ -1,0 +1,26 @@
+{
+  "name": "stonee-workspace",
+  "version": "1.0.0",
+  "description": "Stonee Diamond Marketplace Monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r run dev",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "test": "pnpm --filter frontend test",
+    "seed:core": "node scripts/seed-stonee-core.mjs",
+    "bootstrap:da-catalog": "node scripts/bootstrap-da-catalog.mjs",
+    "smoke": "node scripts/smoke.mjs",
+    "smoke:kyc": "node scripts/smoke-kyc.mjs",
+    "check:prod-gateway": "node scripts/check-prod-gateway.mjs --require-cors-env",
+    "check:prod-gateway:strict": "node scripts/check-prod-gateway.mjs --require-cors-env --strict",
+    "backup:mongo": "node scripts/mongodb-backup.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bcryptjs": "^3.0.3",
+    "mongodb": "^6.12.0"
+  }
+}

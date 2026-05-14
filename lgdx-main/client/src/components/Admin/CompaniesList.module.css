@@ -1,0 +1,411 @@
+﻿/* ==========================================================================
+   COMPANIES LIST STYLES
+   Uses centralized design tokens
+   ========================================================================== */
+
+.listFilterContainer {
+  margin-bottom: var(--spacing-lg);
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.headerTitleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.headerTitle {
+  margin: 0;
+}
+
+.headerSubtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.emptyHint {
+  color: var(--color-text-secondary);
+  margin: var(--spacing-sm) 0;
+}
+
+.companyHeader {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: var(--spacing-xs) 0;
+  width: 100%; /* Make it full width to be clickable everywhere */
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-normal);
+}
+
+.companyHeader:hover {
+  background-color: rgba(var(--color-brand-primary-rgb), 0.05);
+}
+
+.companyTitleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+.companyName {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.companyMetaBadges {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-secondary);
+  background: var(--color-surface-primary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.badgeTone_success {
+  border-color: rgba(var(--color-success-rgb), 0.35);
+  background: rgba(var(--color-success-rgb), 0.10);
+  color: var(--color-success);
+}
+
+.badgeTone_warning {
+  border-color: rgba(var(--color-warning-rgb), 0.35);
+  background: rgba(var(--color-warning-rgb), 0.10);
+  color: var(--color-warning);
+}
+
+.badgeTone_danger {
+  border-color: rgba(var(--color-danger-rgb), 0.35);
+  background: rgba(var(--color-danger-rgb), 0.10);
+  color: var(--color-danger);
+}
+
+.companyExpandHint {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.chevron {
+  width: 16px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.companyBody {
+  width: 100%;
+}
+
+.companyUsersList {
+  list-style: none;
+  padding-left: 0;
+  margin-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border-secondary);
+  padding-top: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  width: 100%;
+}
+
+/* This is a modifier for the generic admin-list-item */
+.userItemOverride {
+  background-color: var(--color-surface-primary); /* A darker shade for nested items */
+  padding: var(--spacing-lg) var(--spacing-xl);
+  margin-bottom: 0; /* Gap is now handled by flexbox on parent */
+  border: 1px solid var(--color-border-primary);
+}
+
+.userItemOverride .adminItemDetails p {
+  font-size: var(--font-size-sm);
+  margin: var(--spacing-xs) 0;
+}
+
+.userItemOverride .adminItemDetails p strong {
+  min-width: 60px; /* Align keys */
+  display: inline-block;
+  font-weight: var(--font-weight-medium);
+}
+
+
+
+.companyActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background-color: var(--color-surface-primary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-secondary);
+}
+
+.userActionsCell {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 40px;
+}
+
+.actionsTrigger {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-surface-primary);
+  color: var(--color-text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.actionsTrigger:hover:not(:disabled) {
+  background: var(--color-surface-elev-1);
+  border-color: var(--color-border-secondary);
+}
+
+.actionsTrigger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.actionsMenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 20;
+  min-width: 220px;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-surface-primary);
+  box-shadow: var(--shadow-elev-2);
+}
+
+.menuItem {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  text-align: left;
+}
+
+.menuItem:hover:not(:disabled) {
+  background: var(--color-surface-elev-1);
+}
+
+.menuItem:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.menuDivider {
+  height: 1px;
+  margin: var(--spacing-xs) 0;
+  background: var(--color-border-primary);
+}
+
+.menuItemDanger {
+  color: var(--color-danger);
+}
+
+.menuItemDanger:hover:not(:disabled) {
+  background: rgba(var(--color-danger-rgb), 0.08);
+}
+
+
+
+/* ==========================================================================
+   MODAL CONTENT STYLING
+   ========================================================================== */
+
+.modalGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.inlineChecks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xs);
+}
+
+.modalDivider {
+  margin: var(--spacing-lg) 0;
+  border-color: var(--color-border-secondary);
+}
+
+.modalSectionTitle {
+  margin: 0 0 var(--spacing-md);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+}
+
+.modalChecksColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.modalHint {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-medium);
+  margin-top: var(--spacing-xs);
+}
+
+.modalFormGroup {
+  margin-bottom: var(--spacing-lg);
+}
+
+.modalFormGroup label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.modalSelect {
+  width: 100%;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-secondary);
+  background-color: var(--color-surface-primary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  box-sizing: border-box;
+  transition: 
+    border-color var(--transition-normal), 
+    box-shadow var(--transition-normal);
+}
+
+.modalSelect:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-focus);
+  outline: none;
+}
+
+/* Message for async operations */
+.processingMessage {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-brand-primary-900);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-md);
+  background-color: rgba(var(--color-brand-primary-rgb), 0.1);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(var(--color-brand-primary-rgb), 0.2);
+}
+
+.companyListItem {
+  flex-wrap: wrap; /* Specific override for company list items */
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border-primary);
+  background: var(--color-surface-secondary);
+  border-radius: var(--radius-md);
+}
+
+.pageButton {
+  background: var(--color-surface-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.pageButton:hover:not(:disabled) {
+  background: var(--color-surface-elev-1);
+  border-color: var(--color-border-secondary);
+}
+
+.pageButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pageInfo {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .companyHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+  
+  .companyName {
+    font-size: var(--font-size-md);
+  }
+  
+  .userItemOverride {
+    padding: var(--spacing-md);
+  }
+} 

@@ -1,0 +1,84 @@
+/* AcceptInvitePage.module.css */
+.acceptInvitePage {
+  padding: var(--spacing-3xl);
+  min-height: 100vh;
+  background: transparent;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.acceptInviteContainer {
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-4xl);
+  box-shadow: var(--shadow-glass-card);
+  width: 100%;
+  max-width: var(--content-width-sm);
+  border: 2px solid var(--color-border-secondary);
+  transition: all var(--transition-normal) var(--ease-in-out);
+}
+
+.acceptInviteContainer h2 {
+  color: var(--color-text-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  filter: drop-shadow(0 0 8px rgba(var(--color-brand-primary-rgb), 0.5));
+}
+
+.formGroup {
+  margin-bottom: var(--spacing-xl);
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+}
+
+.errorMessage {
+  background-color: rgba(var(--color-danger-rgb), 0.1);
+  border: 1px solid rgba(var(--color-danger-rgb), 0.3);
+  color: var(--color-danger);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  font-weight: var(--font-weight-medium);
+}
+
+.successMessage {
+  background-color: rgba(var(--color-success-rgb), 0.1);
+  border: 1px solid rgba(var(--color-success-rgb), 0.3);
+  color: var(--color-success);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  text-align: center;
+  font-weight: var(--font-weight-medium);
+}
+
+/* Responsive design */
+@media (max-width: var(--breakpoint-sm)) {
+  .acceptInvitePage {
+    padding: var(--spacing-md);
+  }
+
+  .acceptInviteContainer {
+    padding: var(--spacing-3xl) var(--spacing-xl);
+  }
+
+  .acceptInviteContainer h2 {
+    font-size: var(--font-size-xl);
+  }
+}

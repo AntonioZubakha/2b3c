@@ -1,0 +1,48 @@
+﻿.formGroup {
+  margin-bottom: var(--spacing-lg);
+}
+
+.currentManager {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background-color: var(--color-surface-secondary);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-secondary);
+}
+
+.currentManager i {
+  color: var(--color-brand-primary-900);
+}
+
+.loading,
+.error,
+.noManagers {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  text-align: center;
+  justify-content: center;
+}
+
+.loading {
+  color: var(--color-text-secondary);
+}
+
+.error {
+  color: var(--color-error);
+}
+
+.noManagers {
+  color: var(--color-text-secondary);
+}
+
+.helperText {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}

@@ -1,0 +1,352 @@
+﻿/* Notification bell — glass-style, premium look */
+.notificationBell {
+  position: relative;
+}
+
+.bellButton {
+  position: relative;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  min-height: 52px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: background var(--transition-normal) ease,
+              border-color var(--transition-normal) ease,
+              transform var(--transition-fast) ease,
+              box-shadow var(--transition-normal) ease;
+}
+
+.bellButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.bellButton:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.bellButton:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring), 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Light theme: inverted glass */
+:root:not([data-theme="dark"]) .bellButton {
+  background: rgba(15, 23, 42, 0.06);
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+:root:not([data-theme="dark"]) .bellButton:hover {
+  background: rgba(15, 23, 42, 0.1);
+  border-color: rgba(15, 23, 42, 0.18);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Wrapper: circular “stage” for the icon so it sits in a clear area */
+/* Icon wrapper: тонкое кольцо, колокольчик — главный акцент */
+.bellIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  transition: transform var(--transition-fast) ease,
+              border-color var(--transition-normal) ease,
+              box-shadow var(--transition-fast) ease;
+}
+
+.bellButton:hover .bellIconWrapper {
+  transform: scale(1.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+:root:not([data-theme="dark"]) .bellIconWrapper {
+  border-color: rgba(15, 23, 42, 0.2);
+}
+
+:root:not([data-theme="dark"]) .bellButton:hover .bellIconWrapper {
+  border-color: rgba(15, 23, 42, 0.35);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.12);
+}
+
+/* Иконка: маска + цвет, лёгкое свечение */
+.bellIcon {
+  display: block;
+  width: 26px;
+  height: 26px;
+  background-color: rgba(255, 255, 255, 0.95);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.2));
+  transition: filter var(--transition-fast) ease;
+}
+
+.bellButton:hover .bellIcon {
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.35)) drop-shadow(0 0 12px rgba(99, 102, 241, 0.2));
+}
+
+:root:not([data-theme="dark"]) .bellIcon {
+  background-color: #1e293b;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.08));
+}
+
+:root:not([data-theme="dark"]) .bellButton:hover .bellIcon {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12)) drop-shadow(0 0 12px rgba(99, 102, 241, 0.15));
+}
+
+/* Badge: бренд-градиент */
+.badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: linear-gradient(135deg, var(--color-brand-primary) 0%, var(--color-secondary-accent) 100%);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 10px;
+  min-width: 18px;
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Dropdown: фон и границы из темы */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 380px;
+  max-height: 500px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.dropdownHeader h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.markAllButton {
+  background: none;
+  border: none;
+  color: var(--color-brand-primary-900);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.markAllButton:hover {
+  background-color: var(--color-brand-primary-50);
+  color: var(--color-brand-primary-hover);
+}
+
+.notificationList {
+  overflow-y: auto;
+  max-height: 400px;
+  flex: 1;
+}
+
+.loading,
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.emptyIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.empty p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.notificationItem {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-border-primary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  position: relative;
+}
+
+.notificationItem:hover {
+  background-color: var(--color-surface-hover);
+}
+
+.notificationItem:last-child {
+  border-bottom: none;
+}
+
+.notificationItem.unread {
+  background-color: var(--color-brand-primary-50);
+}
+
+.notificationItem.unread:hover {
+  background-color: var(--color-brand-primary-100);
+}
+
+[data-theme="dark"] .notificationItem.unread {
+  background-color: rgba(99, 102, 241, 0.12);
+}
+
+[data-theme="dark"] .notificationItem.unread:hover {
+  background-color: rgba(99, 102, 241, 0.18);
+}
+
+.notificationIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+}
+
+.notificationIconSvg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.notificationContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.notificationTitle {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.notificationMessage {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.notificationDeal {
+  font-size: 12px;
+  color: var(--color-brand-primary-900);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.notificationTime {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.unreadIndicator {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-brand-primary);
+  border-radius: 50%;
+}
+
+/* Priority colors (семантика одна, в тёмной теме те же акценты) */
+.priorityUrgent {
+  border-left: 3px solid var(--color-danger);
+}
+
+.priorityHigh {
+  border-left: 3px solid var(--color-warning);
+}
+
+.priorityMedium {
+  border-left: 3px solid var(--color-brand-primary);
+}
+
+.priorityLow {
+  border-left: 3px solid var(--color-text-muted);
+}
+
+.dropdownFooter {
+  padding: 12px 16px;
+  border-top: 1px solid var(--color-border-primary);
+}
+
+.viewAllButton {
+  width: 100%;
+  padding: 8px;
+  background: none;
+  border: none;
+  color: var(--color-brand-primary-900);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.viewAllButton:hover {
+  background-color: var(--color-brand-primary-50);
+  color: var(--color-brand-primary-hover);
+}
+
+/* Match header burger breakpoint */
+@media (max-width: 1080px) {
+  .dropdown {
+    position: fixed;
+    top: 60px;
+    left: 8px;
+    right: 8px;
+    width: auto;
+  }
+}

@@ -1,0 +1,167 @@
+﻿/* ==========================================================================
+   BENEFITS PAGE - Single page with Suppliers/Buyers tabs and card grid
+   ========================================================================== */
+
+.page {
+  min-height: 100vh;
+  padding: var(--spacing-4xl) var(--spacing-xl);
+  background: transparent;
+}
+
+.container {
+  max-width: var(--line-length-comfortable);
+  margin: 0 auto;
+  background: var(--color-surface-elevated);
+  border: 2px solid var(--color-border-secondary);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-glass-card);
+  padding: var(--spacing-4xl) var(--spacing-3xl);
+  animation: fadeIn var(--transition-slower) ease-out;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  padding-bottom: var(--spacing-2xl);
+  border-bottom: 2px solid var(--color-border-secondary);
+}
+
+.benefitsTitle {
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-lg);
+  color: var(--color-text-primary);
+  background: linear-gradient(135deg, var(--color-brand-primary), var(--color-secondary-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(var(--color-brand-primary-rgb), 0.3));
+  line-height: 1.2;
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Tabs (RapNet-style switcher) */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-2xl);
+  margin-bottom: var(--spacing-3xl);
+  padding-bottom: var(--spacing-xl);
+  border-bottom: 2px solid var(--color-border-primary);
+}
+
+.tab {
+  position: relative;
+  padding: var(--spacing-sm) 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.tab:hover {
+  color: var(--color-text-primary);
+}
+
+.tabActive {
+  color: var(--color-brand-primary-900);
+}
+
+.tabActive::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 3px;
+  background: var(--color-brand-primary);
+  border-radius: 2px;
+}
+
+.intro {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-3xl);
+  text-align: center;
+}
+
+/* Benefits grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-2xl);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--spacing-2xl);
+  background: var(--color-surface-default);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-xl);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  border-color: var(--color-border-secondary);
+  box-shadow: var(--shadow-glass-card);
+}
+
+.cardIcon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-brand-primary-900);
+}
+
+.cardTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-md);
+  color: var(--color-text-primary);
+  line-height: 1.3;
+}
+
+.cardDescription {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .container {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+  }
+
+  .benefitsTitle {
+    font-size: clamp(2rem, 6vw, 2.75rem);
+  }
+
+  .tabs {
+    gap: var(--spacing-xl);
+  }
+
+  .tab {
+    font-size: var(--font-size-md);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container {
+    animation: none;
+  }
+}

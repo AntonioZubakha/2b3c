@@ -1,0 +1,169 @@
+/* ==========================================================================
+   UNIFIED PAGE SECTION COMPONENT
+   Единый стиль секций для всех страниц проекта
+   ========================================================================== */
+
+.pageSection {
+  /* Layout */
+  width: 100%;
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-3xl);
+  
+  /* Animation from homepage-theme.css */
+  animation: slideUp var(--transition-slow) var(--ease-out);
+}
+
+.sectionHeader {
+  /* Layout */
+  text-align: center;
+  
+  /* Spacing */
+  margin-bottom: var(--spacing-2xl);
+  
+  /* Max width for readability */
+  max-width: var(--content-width-2xl);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sectionTitle {
+  /* Reset */
+  margin: 0 0 var(--spacing-md);
+  
+  /* Typography */
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  
+  color: var(--color-text-primary);
+}
+
+.sectionSubtitle {
+  /* Reset */
+  margin: 0;
+  
+  /* Typography */
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.sectionContent {
+  /* Layout */
+  width: 100%;
+}
+
+/* ==========================================================================
+   VARIANT STYLES
+   ========================================================================== */
+
+.default {
+  /* Default transparent background */
+  background: transparent;
+}
+
+.glass {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-3xl);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal) var(--ease-in-out);
+}
+
+.glass:hover {
+  border-color: var(--color-border-focus);
+  box-shadow: var(--shadow-md);
+  transform: var(--transform-hover-lift-sm);
+}
+
+.transparent {
+  /* Completely transparent */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* ==========================================================================
+   SPACING VARIANTS
+   ========================================================================== */
+
+.spacing-sm {
+  margin-bottom: var(--spacing-lg);
+}
+
+.spacing-md {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.spacing-lg {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.spacing-xl {
+  margin-bottom: var(--spacing-4xl);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .pageSection {
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  .sectionHeader {
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .sectionSubtitle {
+    font-size: var(--font-size-md);
+  }
+  
+  .glass {
+    padding: var(--spacing-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .pageSection {
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .sectionHeader {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .sectionTitle {
+    font-size: var(--font-size-xl);
+  }
+  
+  .sectionSubtitle {
+    font-size: var(--font-size-sm);
+  }
+  
+  .glass {
+    padding: var(--spacing-lg);
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .pageSection {
+    animation: none;
+  }
+  
+  .glass:hover {
+    transform: none;
+  }
+}

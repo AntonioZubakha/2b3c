@@ -1,0 +1,7 @@
+.loadingContainer {
+  text-align: center;
+  margin-top: var(--spacing-4xl);
+  padding: var(--spacing-xl);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+} 

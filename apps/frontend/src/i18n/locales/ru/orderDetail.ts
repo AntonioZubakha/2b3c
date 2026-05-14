@@ -1,0 +1,17 @@
+export const orderDetail = {
+  loading: 'Открываем детали заказа…',
+  missingOrder: 'Не указан заказ',
+  loadError: 'Не удалось загрузить заказ.',
+  unavailableTitle: 'Заказ недоступен',
+  notFound: 'Этот заказ не найден.',
+  backToOrders: 'Ко всем заказам',
+  back: 'Назад',
+  orderRef: 'Номер заказа',
+  placedOn: 'Оформлен',
+  total: 'Итого',
+  items: 'Позиции',
+  bespokeMeta: 'Бриллиант {{diamond}} · оправа {{setting}}',
+  shipping: 'Доставка',
+  processingNote: 'Типичная обработка: 3–5 рабочих дней после подтверждения.',
+  allOrders: '← Все заказы',
+};

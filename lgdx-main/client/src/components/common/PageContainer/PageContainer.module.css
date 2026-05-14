@@ -1,0 +1,139 @@
+/* ==========================================================================
+   UNIFIED PAGE CONTAINER COMPONENT
+   Единый контейнер для всех страниц проекта
+   ========================================================================== */
+
+.pageContainer {
+  /* Layout */
+  width: 100%;
+  margin: 0 auto;
+  
+  /* Animation from homepage-theme.css */
+  animation: fadeIn var(--transition-slow) var(--ease-out);
+}
+
+/* ==========================================================================
+   MAX WIDTH VARIANTS
+   ========================================================================== */
+
+.maxWidth-sm {
+  max-width: var(--content-width-sm);
+}
+
+.maxWidth-md {
+  max-width: var(--content-width-md);
+}
+
+.maxWidth-lg {
+  max-width: var(--content-width-lg);
+}
+
+.maxWidth-xl {
+  max-width: var(--content-width-xl);
+}
+
+.maxWidth-2xl {
+  max-width: var(--content-width-2xl);
+}
+
+.maxWidth-3xl {
+  max-width: var(--content-width-3xl);
+}
+
+.maxWidth-4xl {
+  max-width: var(--content-width-4xl);
+}
+
+.maxWidth-5xl {
+  max-width: var(--content-width-5xl);
+}
+
+.maxWidth-full {
+  max-width: 100%;
+}
+
+/* ==========================================================================
+   PADDING VARIANTS
+   ========================================================================== */
+
+.padding-none {
+  padding: 0;
+}
+
+.padding-sm {
+  padding: var(--spacing-lg);
+}
+
+.padding-md {
+  padding: var(--spacing-xl);
+}
+
+.padding-lg {
+  padding: var(--spacing-2xl);
+}
+
+.padding-xl {
+  padding: var(--spacing-3xl);
+}
+
+/* ==========================================================================
+   BACKGROUND VARIANTS
+   ========================================================================== */
+
+.background-transparent {
+  background: transparent;
+}
+
+.background-glass {
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.background-gradient {
+  background: var(--color-surface-background);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .padding-lg {
+    padding: var(--spacing-xl);
+  }
+  
+  .padding-xl {
+    padding: var(--spacing-2xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .padding-sm {
+    padding: var(--spacing-md);
+  }
+  
+  .padding-md {
+    padding: var(--spacing-lg);
+  }
+  
+  .padding-lg {
+    padding: var(--spacing-lg);
+  }
+  
+  .padding-xl {
+    padding: var(--spacing-xl);
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .pageContainer,
+  .background-gradient {
+    animation: none;
+  }
+}

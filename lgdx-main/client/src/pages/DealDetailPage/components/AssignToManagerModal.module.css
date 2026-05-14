@@ -1,0 +1,42 @@
+﻿.formGroup {
+  margin-bottom: var(--spacing-lg);
+}
+
+.loading,
+.error,
+.noManagers {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  text-align: center;
+  justify-content: center;
+}
+
+.loading {
+  color: var(--color-text-secondary);
+}
+
+.error {
+  color: var(--color-error);
+}
+
+.noManagers {
+  color: var(--color-text-secondary);
+}
+
+.info {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-surface-secondary);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.info i {
+  color: var(--color-brand-primary-900);
+}

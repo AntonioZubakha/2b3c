@@ -1,0 +1,70 @@
+{
+  "name": "file-product-import-service",
+  "version": "1.0.0",
+  "description": "LGDX File Product Import Microservice",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -rf dist",
+    "lint": "eslint src --ext .ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:unit": "jest",
+    "test:integration": "jest --testPathPattern=integration",
+    "docker:build": "docker build -t lgdx/file-import-service .",
+    "docker:run": "docker run --env-file .env -v /uploads:/app/uploads -p 3002:3000 lgdx/file-import-service"
+  },
+  "keywords": [
+    "microservice",
+    "file-import",
+    "lgdx",
+    "rabbitmq",
+    "mongodb",
+    "csv",
+    "excel"
+  ],
+  "author": "LGDX Team",
+  "license": "MIT",
+  "dependencies": {
+    "@types/amqplib": "^0.10.5",
+    "@types/exceljs": "^0.5.3",
+    "@types/express": "^4.17.21",
+    "amqplib": "^0.10.4",
+    "axios": "^1.7.2",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.4.5",
+    "exceljs": "^4.4.0",
+    "express": "^5.1.0",
+    "fs-extra": "^11.0.0",
+    "mongoose": "^8.0.3",
+    "pino": "^8.21.0",
+    "pino-pretty": "^10.3.1",
+    "prom-client": "^15.1.2",
+    "redis": "^4.6.13",
+    "telegraf": "^4.12.3",
+    "ts-node": "^10.9.2",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/jest": "^29.5.14",
+    "@types/multer": "^1.4.11",
+    "@types/node": "^18.19.11",
+    "@types/node-telegram-bot-api": "^0.64.9",
+    "@types/supertest": "^6.0.2",
+    "@types/uuid": "^9.0.8",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.5.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

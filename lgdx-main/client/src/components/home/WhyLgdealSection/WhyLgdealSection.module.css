@@ -1,0 +1,112 @@
+/* ==========================================================================
+   WHY LGDEAL SECTION - Design tokens
+   ========================================================================== */
+
+.section {
+  padding: calc(var(--spacing-4xl) * 1.35) var(--spacing-3xl);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  background: transparent;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(var(--color-brand-primary-rgb), 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--color-brand-primary-rgb), 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 100% 70% at 50% 50%, black 20%, transparent 65%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 70% at 50% 50%, black 20%, transparent 65%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-3xl);
+  max-width: var(--content-width-5xl);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  padding: var(--spacing-3xl) var(--spacing-2xl);
+  padding-top: calc(var(--spacing-3xl) + 4px);
+  background: linear-gradient(150deg, var(--color-surface-elevated) 0%, var(--color-surface-elev-1) 62%, var(--color-surface-elev-2) 100%);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-xl);
+  box-shadow:
+    var(--shadow-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.34);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-brand);
+  opacity: 0.75;
+}
+
+.cardTitle {
+  font-size: var(--home-font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-md);
+  line-height: var(--line-height-tight);
+  color: #7f6999;
+}
+
+[data-theme='dark'] .card {
+  background: var(--color-surface-elevated);
+  box-shadow:
+    var(--shadow-sm),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+[data-theme='dark'] .card::before {
+  opacity: 0.55;
+}
+
+[data-theme='dark'] .cardTitle {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.cardText {
+  font-size: var(--home-font-size-md);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* .animateOnScroll — defined globally in utilities.css */
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--spacing-3xl) var(--spacing-xl);
+  }
+
+  .grid {
+    gap: var(--spacing-2xl);
+  }
+
+  .card {
+    padding: var(--spacing-2xl) var(--spacing-xl);
+  }
+}
+
+/* prefers-reduced-motion for .animateOnScroll handled in utilities.css */

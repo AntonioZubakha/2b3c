@@ -1,0 +1,54 @@
+/* ==========================================================================
+   PortalTooltip — styles for the portal-rendered tooltip
+   All visual tokens come from the global token system (tokens.css)
+   ========================================================================== */
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  cursor: help;
+  transition: color var(--transition-fast) var(--ease-in-out);
+}
+
+.trigger[data-disabled="true"] {
+  cursor: default;
+}
+
+/* Portal overlay — rendered in document.body via createPortal */
+.tooltip {
+  position: fixed;
+  z-index: var(--z-tooltip);
+  pointer-events: none;
+  animation: globalTooltipFadeIn var(--transition-fast) var(--ease-out);
+}
+
+.content {
+  background: var(--color-surface-background);
+  border: 1px solid var(--color-brand-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(var(--color-brand-primary-rgb), 0.2);
+}
+
+.arrow {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--color-brand-primary);
+}

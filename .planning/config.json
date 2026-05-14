@@ -1,0 +1,23 @@
+{
+  "mode": "yolo",
+  "granularity": "standard",
+  "parallelization": true,
+  "commit_docs": true,
+  "model_profile": "balanced",
+  "workflow": {
+    "research": true,
+    "plan_check": true,
+    "verifier": true,
+    "nyquist_validation": true,
+    "auto_advance": false,
+    "subagent_timeout": 300000
+  },
+  "intel": {
+    "enabled": false
+  },
+  "project": {
+    "display_name": "2B3C",
+    "code": "2B3C",
+    "working_title_note": "Рабочее имя продукта — 2B3C (отсылка к «два бриллианта в три карата…»). Репозиторий/пакеты пока stonee-*."
+  }
+}

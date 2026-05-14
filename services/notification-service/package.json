@@ -1,0 +1,13 @@
+{
+  "name": "@stonee/notification-service",
+  "version": "1.0.0",
+  "main": "src/server.ts",
+  "scripts": {
+    "start": "npx tsx src/server.ts",
+    "dev": "npx tsx watch src/server.ts"
+  },
+  "dependencies": {
+    "@stonee/shared-types": "workspace:*",
+    "fastify": "^4.24.3"
+  }
+}

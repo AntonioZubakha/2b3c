@@ -1,0 +1,269 @@
+/* ==========================================================================
+   UNIFIED MODAL COMPONENT
+   Использует централизованную систему design tokens
+   ========================================================================== */
+
+.modalOverlay {
+  /* Positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--z-modal-backdrop);
+  
+  /* Layout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+  /* Overlay */
+  background: var(--modal-backdrop);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+  /* Animation */
+  animation: fadeIn var(--transition-slow) ease-out;
+  
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modalContent {
+  /* Layout */
+  width: 90%;
+  max-width: 500px;
+  max-height: calc(100vh - 2 * var(--spacing-lg));
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent outer scroll, use inner scroll */
+  
+  /* Spacing */
+  padding: var(--modal-padding);
+  margin: 0; /* Centering is handled by parent flexbox */
+  
+  /* Modal content */
+  background: var(--gradient-premium-subtle);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-xl), 0 0 0 1px var(--color-modal-inset-shadow) inset;
+  
+  /* Animation */
+  animation: slideUp var(--transition-normal) var(--ease-smooth);
+  
+  /* Ensure modal is visible and scrollable */
+  flex-shrink: 0;
+  
+  /* Critical: Ensure flex children can shrink for proper scrolling */
+  min-height: 0;
+  
+  /* Force modal to respect max-height for proper body scrolling */
+  box-sizing: border-box;
+}
+
+.modalHeader {
+  /* Layout */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0; /* Don't shrink header */
+  
+  /* Spacing */
+  padding-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  
+  /* Border */
+  border-bottom: 1px solid var(--color-border-primary);
+}
+
+.modalTitle {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+}
+
+.modalCloseButton {
+  /* Reset */
+  background: none;
+  border: none;
+  padding: var(--spacing-xs);
+  
+  /* Typography */
+  font-size: var(--font-size-2xl);
+  line-height: 1;
+  color: var(--color-text-secondary);
+  
+  /* Interaction */
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+  
+  /* Transitions */
+  transition: 
+    color var(--transition-normal),
+    transform var(--transition-fast),
+    background-color var(--transition-normal);
+}
+
+.modalCloseButton:hover {
+  color: var(--color-text-primary);
+  background-color: rgba(var(--color-text-secondary), 0.1);
+  transform: scale(1.1);
+}
+
+.modalCloseButton:active {
+  transform: scale(0.95);
+}
+
+.modalBody {
+  /* Flexbox - take remaining space */
+  flex: 1 1 0; /* Use 0 instead of auto to force flex calculation */
+  min-height: 0; /* Critical for flexbox scrolling */
+  max-height: 100%; /* Ensure it doesn't exceed parent */
+  
+  /* Spacing */
+  padding-bottom: var(--spacing-lg);
+  padding-right: var(--spacing-xs); /* Space for scrollbar */
+  
+  /* Typography */
+  line-height: 1.6;
+  
+  /* Scrolling - MUST be visible and functional */
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  
+  /* Firefox scrollbar - make it visible */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--color-brand-primary-rgb), 0.6) rgba(var(--color-text-secondary-rgb), 0.2);
+  
+  /* Ensure scrollbar is always visible when content overflows */
+  overscroll-behavior: contain;
+}
+
+/* Custom scrollbar for modal body (Webkit browsers) - Make it more visible */
+.modalBody::-webkit-scrollbar {
+  width: 12px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+  background: rgba(var(--color-text-secondary-rgb), 0.2);
+  border-radius: var(--radius-sm);
+  margin: var(--spacing-xs) 0;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+  background: rgba(var(--color-brand-primary-rgb), 0.6);
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-normal);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--color-brand-primary-rgb), 0.8);
+  background-clip: padding-box;
+}
+
+.modalFooter {
+  /* Layout */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-shrink: 0; /* Don't shrink footer */
+  
+  /* Spacing */
+  padding-top: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+  
+  /* Border */
+  border-top: 1px solid var(--color-border-primary);
+}
+
+/* ==========================================================================
+   MODAL SIZE VARIANTS
+   ========================================================================== */
+
+.modalContent.sm {
+  max-width: 400px;
+  padding: var(--spacing-xl);
+}
+
+.modalContent.lg {
+  max-width: 800px;
+  max-height: calc(100vh - 2 * var(--spacing-lg));
+  height: auto;
+}
+
+.modalContent.xl {
+  max-width: 1200px;
+  width: 95%;
+  max-height: calc(100vh - 2 * var(--spacing-lg));
+  overflow-y: auto;
+}
+
+.modalContent.fullscreen {
+  width: 95%;
+  height: calc(100vh - 2 * var(--spacing-lg));
+  max-width: none;
+  max-height: none;
+}
+
+/* Анимации fadeIn и slideUp используются из централизованного homepage-theme.css */
+
+/* ==========================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: var(--spacing-md);
+  }
+  
+  .modalContent {
+    width: 95%;
+    max-width: none;
+    padding: var(--spacing-xl);
+    max-height: calc(100vh - 2 * var(--spacing-md));
+  }
+  
+  .modalContent.lg {
+    max-height: calc(100vh - 2 * var(--spacing-md));
+  }
+  
+  .modalContent.xl {
+    max-height: calc(100vh - 2 * var(--spacing-md));
+  }
+  
+  .modalContent.fullscreen {
+    height: calc(100vh - 2 * var(--spacing-md));
+  }
+  
+  .modalBody {
+    /* Flexbox will handle the height automatically */
+  }
+  
+  .modalTitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .modalFooter {
+    flex-direction: column-reverse;
+    gap: var(--spacing-sm);
+  }
+  
+  .modalFooter > * {
+    width: 100%;
+  }
+} 

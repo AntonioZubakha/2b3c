@@ -1,0 +1,58 @@
+export const checkout = {
+  initializing: 'Initializing secure checkout…',
+  backToCart: 'Back to cart',
+  stepLogistics: 'Logistics',
+  stepSettlement: 'Settlement',
+  stepConfirmation: 'Confirmation',
+  deliveryTitle: 'Delivery details',
+  fullLegalName: 'Full legal name',
+  namePlaceholder: 'Ex: Alexandra Stone',
+  street: 'Street address',
+  streetPlaceholder: '725 5th Ave, New York',
+  city: 'City',
+  cityPlaceholder: 'Manhattan',
+  postal: 'Postal code',
+  postalPlaceholder: '10022',
+  proceedSettlement: 'Proceed to settlement',
+  initializingBtn: 'Initializing…',
+  settlementTitle: 'Settlement',
+  devModeTitle: 'Development mode',
+  devModeBody:
+    'Set VITE_STRIPE_PUBLISHABLE_KEY and server STRIPE_SECRET_KEY to use Stripe Payment Element. Until then, settlement runs as a closed-loop simulation (suitable for smoke tests).',
+  cardPreviewDisabled: 'Card preview (disabled)',
+  stripeSecure:
+    'Card data is handled by Stripe; Stonee never sees your full card number.',
+  simSecure:
+    'Your transaction is secured by AES-256 bank-level encryption. Stonee never stores raw financial credentials.',
+  securing: 'Securing transaction…',
+  simPay: 'Simulated settlement — ${{amount}}',
+  testPay: 'Complete test payment — ${{amount}}',
+  stripePrepare: 'Preparing a secure session with Stripe…',
+  stripeStartError: 'Could not start card payment',
+  stripeMissingSession: 'Missing payment session',
+  paymentInitFailed: 'Payment initialization failed',
+  kycRequiredTitle: 'Identity verification required',
+  kycRequiredBody:
+    'Orders at or above the configured threshold need a buyer account with completed KYC. Complete verification for your account, then try again.',
+  kycUnavailableTitle: 'Verification temporarily unavailable',
+  kycUnavailableBody:
+    'We could not reach the verification service. Please wait a moment and try again.',
+  kycDevHint:
+    'Local dev: with STONEE_ALLOW_KYC_SELF_VERIFY=true, POST /api/user/auth/kyc/self-verify with your Bearer token, then retry.',
+  kycSecurityCta: 'Open account security',
+  checkoutFailedGeneric: 'Checkout could not be completed. Please try again.',
+  acquisitionTitle: 'Acquisition',
+  acquisitionComplete: 'complete',
+  successBody:
+    'Order #{{id}} has been secured. Heritage documents are being generated for your vault.',
+  continueBrowsing: 'Continue browsing',
+  accessVault: 'Access vault',
+  manifestSummary: 'Manifest summary',
+  qty: 'Qty: 1',
+  expressLogistics: 'Express insured logistics',
+  compFree: '$0 (Comp.)',
+  total: 'Total',
+  trustTitle: 'Trust infrastructure',
+  trustBody:
+    'Every Stonee shipment is 100% insured by Lloyd\'s of London and trackable via encrypted node link.',
+};

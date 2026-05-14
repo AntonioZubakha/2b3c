@@ -1,0 +1,389 @@
+/**
+ * Accessibility Styles - Global A11y Utilities
+ * Глобальные стили для улучшения accessibility
+ * 
+ * @description
+ * Набор утилит для WCAG 2.1 AA compliance:
+ * - Screen reader utilities
+ * - Focus management
+ * - Skip links
+ * - High contrast mode
+ */
+
+/* ==========================================================================
+   SCREEN READER UTILITIES
+   ========================================================================== */
+
+/**
+ * Screen Reader Only (sr-only)
+ * Скрывает элемент визуально, но оставляет доступным для screen readers
+ * 
+ * Используйте для:
+ * - Описаний иконок
+ * - Дополнительного контекста
+ * - Live regions
+ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/**
+ * Screen Reader Only Focusable
+ * Становится видимым при фокусировке (полезно для skip links)
+ */
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ==========================================================================
+   FOCUS STYLES
+   ========================================================================== */
+
+/**
+ * Enhanced Focus Indicator (WCAG 2.2 Level AAA)
+ * Улучшенный индикатор фокуса с повышенной видимостью
+ */
+:focus-visible {
+  outline: 3px solid var(--color-brand-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+  transition: outline-offset var(--transition-fast) var(--ease-out);
+}
+
+/* Premium focus ring effect - subtle double ring */
+*:focus-visible {
+  box-shadow: 
+    0 0 0 3px var(--color-surface-background),
+    0 0 0 6px var(--color-brand-primary);
+  outline: none;
+}
+
+/* Убираем outline для мыши, оставляем для клавиатуры */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Enhanced focus for interactive elements */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+  outline: none;
+}
+
+/**
+ * Focus Within
+ * Показывает, что внутри элемента есть фокус
+ */
+.focus-within:focus-within {
+  box-shadow: var(--shadow-focus);
+}
+
+/* ==========================================================================
+   HIGH CONTRAST MODE SUPPORT
+   ========================================================================== */
+
+/**
+ * Windows High Contrast Mode
+ * Обеспечивает видимость элементов в режиме высокой контрастности
+ */
+@media (prefers-contrast: high) {
+  :root {
+    --color-border-primary: CanvasText;
+    --color-border-secondary: Highlight;
+    --color-text-primary: CanvasText;
+    --color-text-secondary: CanvasText;
+    --color-brand-primary: Highlight;
+  }
+
+  /* Убираем фоновые изображения */
+  * {
+    background-image: none !important;
+  }
+
+  /* Убираем тени */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Усиливаем borders */
+  button,
+  input,
+  select,
+  textarea {
+    border: 2px solid CanvasText;
+  }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+/**
+ * Respect Prefers Reduced Motion
+ * Убираем анимации для пользователей с prefers-reduced-motion
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   KEYBOARD NAVIGATION
+   ========================================================================== */
+
+/**
+ * Keyboard navigation: rely on native :focus-visible (no JS class needed).
+ * Hide outline for mouse/touch, show for keyboard — browser handles this automatically.
+ */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   LIVE REGIONS
+   ========================================================================== */
+
+/**
+ * ARIA Live Region
+ * Для объявлений screen reader
+ */
+[aria-live="polite"],
+[aria-live="assertive"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   INTERACTIVE ELEMENTS
+   ========================================================================== */
+
+/**
+ * Minimum Touch Target Size
+ * WCAG 2.1 требует минимум 44x44px для touch targets
+ */
+button,
+a.btn,
+a.button,
+input[type="checkbox"],
+input[type="radio"],
+select {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Исключения для inline элементов */
+a:not(.btn):not(.button) {
+  min-height: auto;
+  min-width: auto;
+}
+
+/* Enhanced interactive states for better UX */
+button,
+a.btn,
+a.button,
+[role="button"] {
+  position: relative;
+  transition: all var(--transition-normal) var(--ease-out);
+  /* Kill native UA fill/border seam under custom backgrounds (Chrome/Safari/Edge) */
+  appearance: none;
+  -webkit-appearance: none;
+  background-origin: border-box;
+}
+
+/* Hover state - subtle lift effect */
+button:hover:not(:disabled),
+a.btn:hover,
+a.button:hover,
+[role="button"]:hover {
+  transform: translateY(-1px);
+}
+
+/* Active state - pressed effect */
+button:active:not(:disabled),
+a.btn:active,
+a.button:active,
+[role="button"]:active {
+  transform: translateY(0);
+  transition-duration: var(--transition-fast);
+}
+
+/* Link hover states */
+a:not(.btn):not(.button) {
+  position: relative;
+  transition: color var(--transition-normal) var(--ease-out);
+}
+
+/**
+ * Disabled Elements Styling
+ * Четкая визуальная индикация отключенных элементов
+ */
+:disabled,
+[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   TEXT & READABILITY
+   ========================================================================== */
+
+/**
+ * Readable Text
+ * Оптимальная ширина для чтения (45-75 символов)
+ */
+.readable-width {
+  max-width: var(--line-length-comfortable);
+}
+
+/**
+ * Line Height for Readability
+ * WCAG рекомендует 1.5 для body text
+ */
+p,
+li,
+td {
+  line-height: var(--line-height-relaxed);
+}
+
+/* ==========================================================================
+   COLOR & CONTRAST
+   ========================================================================== */
+
+/**
+ * Ensure Text Contrast
+ * Проверка контрастности текста (WCAG AA: 4.5:1)
+ */
+.text-low-contrast {
+  /* Используется для проверки - НЕ использовать в продакшене */
+  background-color: #767676; /* Минимальный контраст с белым: 4.5:1 */
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   LANDMARKS & SEMANTIC HTML
+   ========================================================================== */
+
+/**
+ * ARIA Landmarks
+ * Помогают screen readers в навигации
+ */
+[role="main"],
+[role="navigation"],
+[role="complementary"],
+[role="contentinfo"],
+[role="banner"],
+[role="search"] {
+  /* Semantic landmarks - добавляют структуру */
+}
+
+/* ==========================================================================
+   ERROR MESSAGING
+   ========================================================================== */
+
+/**
+ * Error Message Styles
+ * Четкая индикация ошибок для всех пользователей
+ */
+.error-message {
+  color: var(--color-danger);
+  font-weight: var(--font-weight-semibold);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.error-message::before {
+  content: '⚠';
+  font-size: var(--font-size-lg);
+}
+
+/* ==========================================================================
+   TABLES ACCESSIBILITY
+   ========================================================================== */
+
+/**
+ * Accessible Tables
+ * WCAG требует четкую структуру таблиц
+ */
+table caption {
+  padding: var(--spacing-md);
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+}
+
+th {
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+}
+
+/* Zebra striping для лучшей читаемости */
+tbody tr:nth-child(even) {
+  background-color: rgba(var(--color-surface-primary-rgb), 0.3);
+}
+
+/* ==========================================================================
+   PRINT ACCESSIBILITY
+   ========================================================================== */
+
+@media print {
+  /* Показываем ссылки для печати */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: var(--color-text-secondary);
+  }
+
+  /* Убираем ссылки на фрагменты страницы */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  /* Page breaks */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  pre, blockquote, table {
+    page-break-inside: avoid;
+  }
+}
+

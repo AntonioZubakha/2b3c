@@ -1,0 +1,6 @@
+{
+  "watch": ["src", ".env"],
+  "ext": "ts,json",
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "node -r tsconfig-paths/register --max-old-space-size=8192 --expose-gc ./node_modules/ts-node/dist/bin.js src/index.ts"
+} 

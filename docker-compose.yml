@@ -1,0 +1,236 @@
+
+
+services:
+  # Infrastructure
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - stonee-net
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6079:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - stonee-net
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - stonee-net
+
+  # Microservices
+  api-gateway:
+    build: 
+      context: .
+      dockerfile: ./apps/api-gateway/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-changeme_prod_secret}
+      STONEE_GATEWAY_RATE_LIMIT_MAX: ${STONEE_GATEWAY_RATE_LIMIT_MAX:-600}
+      STONEE_CORS_ORIGINS: ${STONEE_CORS_ORIGINS:-}
+    depends_on:
+      - catalog-service
+      - user-service
+      - jewelry-service
+      - supplier-service
+      - search-service
+      - order-service
+      - pricing-service
+      - notification-service
+      - recommendation-service
+    restart: unless-stopped
+    networks:
+      - stonee-net
+
+  user-service:
+    build: 
+      context: .
+      dockerfile: ./services/user-service/Dockerfile
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/stonee_users
+      JWT_SECRET: ${JWT_SECRET:-changeme_prod_secret}
+      STAFF_INVITE_CODE: ${STAFF_INVITE_CODE:-}
+      STONEE_INTERNAL_SECRET: ${STONEE_INTERNAL_SECRET:-}
+      STONEE_KYC_ENFORCE_MIN_USD: ${STONEE_KYC_ENFORCE_MIN_USD:-0}
+      STONEE_ALLOW_KYC_SELF_VERIFY: ${STONEE_ALLOW_KYC_SELF_VERIFY:-false}
+    ports:
+      - "3001:3000"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - stonee-net
+
+  catalog-service:
+    build: 
+      context: .
+      dockerfile: ./services/catalog-service/Dockerfile
+    environment:
+      SEARCH_SERVICE_URL: http://search-service:3000
+      STONEE_CACHE_INVALIDATE_SECRET: ${STONEE_CACHE_INVALIDATE_SECRET:-}
+      STONEE_INTERNAL_SECRET: ${STONEE_INTERNAL_SECRET:-}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - stonee-net
+
+  jewelry-service:
+    build:
+      context: .
+      dockerfile: ./services/jewelry-service/Dockerfile
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - stonee-net
+
+  supplier-service:
+    build:
+      context: .
+      dockerfile: ./services/supplier-service/Dockerfile
+    environment:
+      JWT_SECRET: ${JWT_SECRET:-changeme_prod_secret}
+      CATALOG_SERVICE_URL: http://catalog-service:3000
+      PRICING_SERVICE_URL: http://pricing-service:3000
+      SUPPLIER_META_MONGO_URI: ${SUPPLIER_META_MONGO_URI:-mongodb://mongodb:27017/stonee_supplier_meta}
+      SUPPLIER_INGEST_TOKEN: ${SUPPLIER_INGEST_TOKEN:-}
+      DIAMOND_ATELIER_BASE_URL: ${DIAMOND_ATELIER_BASE_URL:-}
+      DIAMOND_ATELIER_USER_NAME: ${DIAMOND_ATELIER_USER_NAME:-}
+      DIAMOND_ATELIER_PASSWORD: ${DIAMOND_ATELIER_PASSWORD:-}
+      DIAMOND_ATELIER_SUPPLIER_USER_ID: ${DIAMOND_ATELIER_SUPPLIER_USER_ID:-}
+      DIAMOND_ATELIER_SUPPLIER_COMPANY_ID: ${DIAMOND_ATELIER_SUPPLIER_COMPANY_ID:-}
+      DIAMOND_ATELIER_ROWS_PER_PAGE: ${DIAMOND_ATELIER_ROWS_PER_PAGE:-}
+      DIAMOND_ATELIER_MAX_PAGES: ${DIAMOND_ATELIER_MAX_PAGES:-}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      catalog-service:
+        condition: service_started
+    restart: unless-stopped
+    networks:
+      - stonee-net
+
+  pricing-service:
+    build:
+      context: .
+      dockerfile: ./services/pricing-service/Dockerfile
+    restart: unless-stopped
+    networks:
+      - stonee-net
+
+  search-service:
+    build: 
+      context: .
+      dockerfile: ./services/search-service/Dockerfile
+    ports:
+      - "3005:3000"
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/stonee_catalog
+      REDIS_URL: redis://redis:6379
+      STONEE_CACHE_INVALIDATE_SECRET: ${STONEE_CACHE_INVALIDATE_SECRET:-}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - stonee-net
+
+  order-service:
+    build: 
+      context: .
+      dockerfile: ./services/order-service/Dockerfile
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/stonee_orders
+      USER_SERVICE_URL: http://user-service:3000
+      STONEE_INTERNAL_SECRET: ${STONEE_INTERNAL_SECRET:-}
+      STONEE_KYC_ENFORCE_MIN_USD: ${STONEE_KYC_ENFORCE_MIN_USD:-0}
+      CATALOG_SERVICE_URL: http://catalog-service:3000
+      NOTIFICATION_SERVICE_URL: http://notification-service:3000
+      PRICING_SERVICE_URL: http://pricing-service:3000
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
+      STRIPE_ALLOW_SIMULATED_PAY: ${STRIPE_ALLOW_SIMULATED_PAY:-true}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - stonee-net
+
+  notification-service:
+    build:
+      context: .
+      dockerfile: ./services/notification-service/Dockerfile
+    restart: unless-stopped
+    networks:
+      - stonee-net
+
+  recommendation-service:
+    build:
+      context: .
+      dockerfile: ./services/recommendation-service/Dockerfile
+    environment:
+      JEWELRY_SERVICE_URL: http://jewelry-service:3000
+    depends_on:
+      - jewelry-service
+    restart: unless-stopped
+    networks:
+      - stonee-net
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./apps/frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api-gateway
+    environment:
+      API_GATEWAY_URL: http://api-gateway:8080
+    volumes:
+      - ./apps/frontend:/app/apps/frontend
+      - ./packages/shared-types:/app/packages/shared-types
+      - /app/apps/frontend/node_modules
+    restart: unless-stopped
+    networks:
+      - stonee-net
+
+networks:
+  stonee-net:
+
+volumes:
+  mongo_data:

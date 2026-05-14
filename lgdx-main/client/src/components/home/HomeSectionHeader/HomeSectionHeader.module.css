@@ -1,0 +1,138 @@
+﻿/* ==========================================================================
+   HOME SECTION HEADER — consistent H2 system (light & dark)
+   ========================================================================== */
+
+.header {
+  max-width: var(--content-width-2xl);
+  margin: 0 auto var(--spacing-4xl);
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.alignLeft .title {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.eyebrow {
+  margin: 0 0 var(--spacing-md);
+  font-size: var(--home-font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family-home-body);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand-primary-900);
+  opacity: 0.9;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--home-font-size-xl);
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-home-display);
+  letter-spacing: -0.028em;
+  line-height: 1.08;
+  color: var(--color-text-primary);
+  position: relative;
+  text-wrap: balance;
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: calc(var(--spacing-md) * -1);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(180px, 34vw);
+  height: 3px;
+  border-radius: var(--radius-xs);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--color-brand-primary-rgb), 0.25) 25%,
+    var(--color-brand-primary) 50%,
+    rgba(var(--color-brand-primary-rgb), 0.25) 75%,
+    transparent
+  );
+  opacity: 0.9;
+}
+
+.subtitle {
+  margin: calc(var(--spacing-xl) + 2px) auto 0;
+  max-width: 52ch;
+  font-size: var(--home-font-size-lg);
+  line-height: 1.5;
+  font-family: var(--font-family-home-body);
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.002em;
+  font-weight: var(--font-weight-medium);
+  text-wrap: balance;
+}
+
+.alignLeft .subtitle {
+  margin-top: calc(var(--spacing-xl) + 8px);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* Global accent span for consistent highlighted word(s) across Home */
+:global(.homeAccent) {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: var(--font-weight-bold);
+}
+
+/* Strict theme isolation: light and dark are configured independently */
+[data-theme='light'] .subtitle {
+  background: none;
+  -webkit-text-fill-color: var(--color-text-secondary);
+  color: var(--color-text-secondary);
+}
+
+[data-theme='light'] :global(.homeAccent) {
+  background: none;
+  -webkit-text-fill-color: #8d73a8;
+  color: #8d73a8;
+}
+
+[data-theme='dark'] .subtitle {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-theme='dark'] :global(.homeAccent) {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (max-width: 899px) {
+  .header {
+    margin-bottom: var(--spacing-3xl);
+  }
+
+  .subtitle {
+    font-size: var(--home-font-size-md);
+    line-height: 1.5;
+    max-width: 44ch;
+  }
+}
+

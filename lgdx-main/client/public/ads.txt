@@ -1,0 +1,3 @@
+# LGDeal currently does not serve ads.
+# This file exists to satisfy Ads.txt checks and returns text/plain.
+

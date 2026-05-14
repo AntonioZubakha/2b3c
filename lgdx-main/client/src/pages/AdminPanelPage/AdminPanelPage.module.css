@@ -1,0 +1,85 @@
+.admin-panel-container {
+  /* HomePage glass effect */
+  background: var(--color-surface-elevated);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-3xl);
+  box-shadow: var(--shadow-glass-card);
+  border: 2px solid var(--color-border-secondary);
+  transition: all var(--transition-normal) var(--ease-in-out);
+}
+
+.admin-panel-container:hover {
+  box-shadow: var(--shadow-glass-card-hover);
+  border-color: var(--color-border-tertiary);
+  transform: var(--transform-hover-lift-sm);
+}
+
+.admin-tab-view {
+  margin-top: var(--spacing-2xl);
+  min-height: 400px;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+/* Category Stats Admin Styles */
+.category-stats-admin {
+  padding: 0;
+}
+
+.category-stats-tabs {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  border-bottom: 2px solid var(--color-border-primary);
+  padding-bottom: var(--spacing-lg);
+}
+
+.category-stats-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--color-surface-secondary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.category-stats-tab:hover {
+  background: var(--color-surface-primary);
+  border-color: var(--color-brand-primary);
+  color: var(--color-text-primary);
+}
+
+.category-stats-tab.active {
+  background: var(--color-brand-primary);
+  border: 1px solid transparent;
+  color: var(--color-text-on-brand);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: var(--shadow-md);
+}
+
+.category-stats-tab i {
+  font-size: var(--font-size-xs);
+}
+
+.category-stats-content {
+  min-height: 600px;
+} 
+
+/* Used to tweak Tabs container via `className={styles['admin-tabs']}` */
+.admin-tabs {}
+
+/* Exported explicitly for `${styles.active}` usage in AdminPanelPage.tsx */
+.active {}

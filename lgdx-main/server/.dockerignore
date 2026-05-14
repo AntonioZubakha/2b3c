@@ -1,0 +1,4 @@
+# Host node_modules (e.g. Windows) must not overwrite Linux deps from `npm ci` — native addons like bcrypt break.
+node_modules
+npm-debug.log*
+.git
