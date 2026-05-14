@@ -1,6 +1,6 @@
 export const wishlist = {
   seoTitle: 'Wishlist',
-  seoDescription: 'Stones and pieces you love — saved for later at Stonee.',
+  seoDescription: 'Stones and pieces you love — saved for later at 2B3C.',
   badge: 'Saved for you',
   title: 'Your',
   titleItalic: 'wishlist',

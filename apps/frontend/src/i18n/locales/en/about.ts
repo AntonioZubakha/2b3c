@@ -3,7 +3,7 @@ export const about = {
   titleLine1: 'Transparency is',
   titleItalic: 'not optional.',
   intro:
-    'We believe buying a diamond should never feel like a gamble. Stonee was built to bring radical transparency, data-driven intelligence and fair pricing to an industry that desperately needs it.',
+    'We believe buying a diamond should never feel like a gamble. 2B3C was built to bring radical transparency, data-driven intelligence and fair pricing to an industry that desperately needs it.',
   missionTitle: 'Our mission',
   missionBody:
     'To democratise access to high-quality lab-grown diamonds by eliminating information asymmetry. Every buyer deserves to know the true market value of what they are purchasing — not what a retailer decides to charge them.',

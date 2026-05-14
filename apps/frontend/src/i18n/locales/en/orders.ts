@@ -14,7 +14,7 @@ export const orders = {
     preShip:
       'Confirmed — preparation and shipping follow the status on your order detail (no separate “in production” step in the app).',
     inTransit: 'On its way — tracking uses the Shipped / Delivered steps on the detail page.',
-    delivered: 'Delivered — thank you for choosing Stonee.',
+    delivered: 'Delivered — thank you for choosing 2B3C.',
     cancelled: 'This order was cancelled.',
   },
   viewDetails: 'View details',

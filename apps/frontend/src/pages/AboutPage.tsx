@@ -36,7 +36,7 @@ const AboutPage: React.FC = () => {
   return (
     <div className="pt-28 pb-16 px-4 relative z-10">
       <Seo
-        title={`${t('about.badge')} — Stonee`}
+        title={`${t('about.badge')} — ${t('common.productName')}`}
         description={t('about.intro')}
         path="/about"
       />

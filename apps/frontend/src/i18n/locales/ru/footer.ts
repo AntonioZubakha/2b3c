@@ -11,7 +11,7 @@ export const footer = {
   careCleaning: 'Уход и чистка',
   lifetimeWarranty: 'Пожизненная гарантия',
   contact: 'Контакты',
-  copyright: '© 2026 Stonee Atelier. Создано с заботой.',
+  copyright: '© 2026 2B3C Atelier. Создано с заботой.',
   privacy: 'Конфиденциальность',
   terms: 'Условия',
   partnerWorkspace: 'Рабочее место партнёра',

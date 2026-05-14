@@ -1,5 +1,5 @@
 export const concierge = {
-  brandLine1: 'Stonee',
+  brandLine1: '2B3C',
   brandLine2: 'консьерж',
   secureHub: 'Защищённый канал',
   closeAria: 'Закрыть консьерж',

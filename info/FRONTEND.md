@@ -7,7 +7,7 @@
 - **Tailwind CSS v4** (`tailwindcss`, `@tailwindcss/vite`)
 - **React Router 7** (`react-router`, `react-router-dom`)
 - **Framer Motion**
-- **i18next** + **react-i18next** — локали `ru` / `en`, ключ `stonee_locale`, `document.documentElement.lang` (см. `src/i18n/config.ts`)
+- **i18next** + **react-i18next** — локали `ru` / `en`, ключ `stonee_locale`, `document.documentElement.lang` (см. `src/i18n/config.ts`). **Публичное имя в витрине, SEO и переводах:** **2B3C** (`common.productName`, `Seo.tsx`, статический `index.html`); npm-scope `@stonee/*` и технические ключи не менялись.
 - **Stripe** — `@stripe/react-stripe-js` на checkout
 - **TanStack Query** (`@tanstack/react-query`) — серверное состояние на **маркетплейсе**, **карточке камня**, **корзине** и **checkout** (кэш, дедуп, `keepPreviousData` на маркетплейсе; корзина и оформление — `refetchOnMount: 'always'`)
 - **Корзина (ключи и хук):** `src/lib/orderQuery.ts` — `orderQueryKeys` (`orderQueryKeys.cart(sessionId)`, префикс `orderQueryKeys.carts()` для инвалидации всех сессий), `useCartQuery`, `fetchCartBySession`. После **оплаты** (checkout), **добавления в корзину** (PDP, коллекции, craft) вызывается `invalidateQueries({ queryKey: orderQueryKeys.carts() })`, чтобы список на `/cart` и `/checkout` не залипал в кэше.

@@ -155,7 +155,7 @@ const DiamondDetailPage: React.FC = () => {
   if (loading) {
     return (
       <div className="pt-32 pb-16 px-6 max-w-7xl mx-auto">
-        <Seo title="Stonee · Diamond" description="Loading certified lab-grown diamond." path="/marketplace" />
+        <Seo title={t('diamond.seoLoadingTitle')} description={t('diamond.seoLoadingDescription')} path="/marketplace" />
         <div className="h-[700px] glass-card-premium shimmer-loading" />
       </div>
     );

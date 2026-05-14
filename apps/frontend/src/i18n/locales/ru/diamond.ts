@@ -1,7 +1,9 @@
 export const diamond = {
   seoTitle: '{{carat}} ct {{shape}}, лабораторный бриллиант',
   seoDescription:
-    '{{carat}} ct {{shape}}, {{color}} / {{clarity}}, сертификат {{lab}} {{cert}} — прозрачная цена ателье Stonee.',
+    '{{carat}} ct {{shape}}, {{color}} / {{clarity}}, сертификат {{lab}} {{cert}} — прозрачная цена ателье 2B3C.',
+  seoLoadingTitle: '2B3C · бриллиант',
+  seoLoadingDescription: 'Загрузка сертифицированного лабораторного бриллианта.',
   backMarketplace: 'К маркетплейсу',
   shareAria: 'Поделиться',
   verifiedReport: 'Проверенный лабораторный отчёт',

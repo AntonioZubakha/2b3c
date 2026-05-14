@@ -21,9 +21,9 @@ export const checkout = {
     'Set VITE_STRIPE_PUBLISHABLE_KEY and server STRIPE_SECRET_KEY to use Stripe Payment Element. Until then, settlement runs as a closed-loop simulation (suitable for smoke tests).',
   cardPreviewDisabled: 'Card preview (disabled)',
   stripeSecure:
-    'Card data is handled by Stripe; Stonee never sees your full card number.',
+    'Card data is handled by Stripe; 2B3C never sees your full card number.',
   simSecure:
-    'Your transaction is secured by AES-256 bank-level encryption. Stonee never stores raw financial credentials.',
+    'Your transaction is secured by AES-256 bank-level encryption. The platform does not store raw financial credentials.',
   securing: 'Securing transaction…',
   simPay: 'Simulated settlement — ${{amount}}',
   testPay: 'Complete test payment — ${{amount}}',
@@ -54,5 +54,5 @@ export const checkout = {
   total: 'Total',
   trustTitle: 'Trust infrastructure',
   trustBody:
-    'Every Stonee shipment is 100% insured by Lloyd\'s of London and trackable via encrypted node link.',
+    'Shipments are tracked from dispatch; carrier insurance and coverage depend on your route and are confirmed with your order.',
 };

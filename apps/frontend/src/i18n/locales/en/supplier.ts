@@ -4,22 +4,22 @@ export const supplier = {
   title: 'Partner',
   titlePartner: 'console',
   intro:
-    'Your account category: {{label}}. Inventory ingestion and commercial terms are coordinated by Stonee operations — this portal shows what applies to you and how feeds are wired.',
+    'Your account category: {{label}}. Inventory ingestion and commercial terms are coordinated by 2B3C operations — this portal shows what applies to you and how feeds are wired.',
   cardListings: 'Listings',
   cardListingsBody:
-    'Diamonds and jewelry you supply appear in the buyer storefront after Stonee validates your feed.',
+    'Diamonds and jewelry you supply appear in the buyer storefront after 2B3C validates your feed.',
   cardFulfillment: 'Fulfillment',
   cardFulfillmentBody:
-    'Orders that include your SKUs surface in operations dashboards; logistics messaging stays on Stonee channels.',
+    'Orders that include your SKUs surface in operations dashboards; logistics messaging stays on 2B3C channels.',
   cardFeeds: 'Feeds',
   cardFeedsBody:
-    'Bulk lab-grown stock from Diamond Atelier is synced from here or by Stonee operations; optional JSON uploads use the form below.',
+    'Bulk lab-grown stock from Diamond Atelier is synced from here or by 2B3C operations; optional JSON uploads use the form below.',
   cardFeedsBodySelf:
-    'Use JSON or HTTP feed ingestion below — inventory is written under your company’s catalog supplier id. Contract-specific integrations are coordinated with Stonee operations.',
+    'Use JSON or HTTP feed ingestion below — inventory is written under your company’s catalog supplier id. Contract-specific integrations are coordinated with 2B3C operations.',
   ingestTitle: 'Catalog JSON ingest',
   ingestHint:
-    'Paste a JSON array of diamonds in Stonee field names. Your active supplier company determines supplierId in the catalog — values inside rows for that field are ignored.',
-  ingestSubmit: 'Submit to Stonee catalog',
+    'Paste a JSON array of diamonds in 2B3C field names. Your active supplier company determines supplierId in the catalog — values inside rows for that field are ignored.',
+  ingestSubmit: 'Submit to 2B3C catalog',
   ingestSending: 'Sending…',
   ingestInvalidJson: 'Invalid JSON.',
   ingestMustArray: 'Root value must be an array of diamond objects.',
@@ -31,12 +31,12 @@ export const supplier = {
   colHttp: 'HTTP',
   registryEmpty: 'Could not load registry.',
   footerNote:
-    'Custom partner feeds and CSV pipelines are wired by Stonee operations (normalizers, QA). Use the JSON form above for self-service trials; production feeds should still go through ops for field mapping and SLAs.',
+    'Custom partner feeds and CSV pipelines are wired by 2B3C operations (normalizers, QA). Use the JSON form above for self-service trials; production feeds should still go through ops for field mapping and SLAs.',
   viewStorefront: 'View buyer storefront',
   categoryFallback: 'Supplier',
   atelierTitle: 'Diamond Atelier stock',
   atelierHint:
-    'Pulls certified lab-grown stock from the configured Diamond Atelier API into your Stonee supplierId. Requires env DIAMOND_ATELIER_SUPPLIER_COMPANY_ID (or legacy DIAMOND_ATELIER_SUPPLIER_USER_ID) to match this workspace.',
+    'Pulls certified lab-grown stock from the configured Diamond Atelier API into your 2B3C supplierId. Requires env DIAMOND_ATELIER_SUPPLIER_COMPANY_ID (or legacy DIAMOND_ATELIER_SUPPLIER_USER_ID) to match this workspace.',
   activeCompany: 'Active supplier company',
   activeCompanyHint: 'API calls use this company’s catalog id. Sign out and back in if your memberships changed.',
   atelierSync: 'Sync Diamond Atelier',
@@ -54,7 +54,7 @@ export const supplier = {
   ordersLoadFail: 'Could not load orders.',
   ordersEmpty: 'No matching orders yet.',
   companyTitle: 'Company profile',
-  companyIntro: 'Shown to Stonee operations and used in fulfillment context. Only the company owner can edit.',
+  companyIntro: 'Shown to 2B3C operations and used in fulfillment context. Only the company owner can edit.',
   companyReadOnlyHint: 'You are a member of this company — contact an owner to change these fields.',
   companyLoadFail: 'Could not load company profile.',
   companySave: 'Save changes',

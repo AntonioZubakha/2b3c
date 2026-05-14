@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
             <div className="md:col-span-1">
               <Link to={brandTo} className="flex items-center gap-2.5 mb-4 no-underline">
                 <BrandMark size={44} />
-                <span className="font-serif text-2xl text-ink">Stonee</span>
+                <span className="font-serif text-2xl text-ink">{t('common.productName')}</span>
               </Link>
               <p className="text-sm text-ink-soft leading-relaxed max-w-xs">{t('footer.tagline')}</p>
             </div>
@@ -87,7 +87,7 @@ const Footer: React.FC = () => {
             <div className="md:col-span-1">
               <Link to={brandTo} className="flex items-center gap-2.5 mb-4 no-underline">
                 <BrandMark size={44} />
-                <span className="font-serif text-2xl text-ink">Stonee</span>
+                <span className="font-serif text-2xl text-ink">{t('common.productName')}</span>
               </Link>
               <p className="text-sm text-ink-soft leading-relaxed max-w-xs">{t('supplier.workspaceBadge')}</p>
             </div>
@@ -154,7 +154,7 @@ const Footer: React.FC = () => {
           <div className="md:col-span-1">
             <Link to={brandTo} className="flex items-center gap-2.5 mb-4 no-underline">
               <BrandMark size={44} />
-              <span className="font-serif text-2xl text-ink">Stonee</span>
+              <span className="font-serif text-2xl text-ink">{t('common.productName')}</span>
             </Link>
             <p className="text-sm text-ink-soft leading-relaxed max-w-xs">{t('footer.tagline')}</p>
           </div>

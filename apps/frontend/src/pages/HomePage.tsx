@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       <Seo
-        title="Stonee — Bespoke Jewelry Atelier"
+        title={t('home.seoTitle')}
         description={t('home.subtitle')}
         path="/"
       />

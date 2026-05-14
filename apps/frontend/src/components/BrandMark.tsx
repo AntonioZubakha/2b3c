@@ -29,7 +29,7 @@ const BrandMark: React.FC<BrandMarkProps> = ({
   className = '',
   tone = 'auto',
   rounded = 'full',
-  alt = 'Stonee atelier',
+  alt = '2B3C',
 }) => {
   const radius = rounded === 'full' ? 'rounded-full' : 'rounded-[28%]';
 

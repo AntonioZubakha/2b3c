@@ -7,6 +7,7 @@ export const home = {
   titleForever: 'forever',
   subtitle:
     'Choose a piece. Choose a stone. See your bill, transparent and complete. Our master jewelers do the rest — quietly, by hand.',
+  seoTitle: '2B3C — Bespoke Jewelry Atelier',
   beginPiece: 'Begin a piece',
   seeCollections: 'See collections',
   howItWorks: 'How it works',
@@ -25,7 +26,7 @@ export const home = {
   stepIntoAtelier1: 'Step into the atelier',
   quietlyDifferent: 'Quietly different',
   whyStonee1: 'Why',
-  whyStonee2: 'Stonee',
+  whyStonee2: '2B3C',
   scoreTitle: 'Diamond Score™',
   scoreDesc:
     'Our quiet AI evaluates 15+ parameters against live market data, giving every stone a clear 0–100 score. No gemology degree required — just better choices.',

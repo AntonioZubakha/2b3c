@@ -1,5 +1,5 @@
 export const cart = {
-  seoDescription: 'Review your Stonee selections — diamonds, bespoke pairs, and jewelry — before secure checkout.',
+  seoDescription: 'Review your 2B3C selections — diamonds, bespoke pairs, and jewelry — before secure checkout.',
   loading: 'Loading your shopping bag…',
   emptyTitle: 'Your atelier bag is empty',
   emptySubtitle: 'Begin a piece in our atelier or browse the diamond collection.',
@@ -24,7 +24,7 @@ export const cart = {
   taxIncluded: 'Tax included',
   checkoutNow: 'Checkout now',
   warrantyTitle: 'Lifetime warranty',
-  warrantyBody: 'Every Stonee creation is protected for life.',
+  warrantyBody: 'Care and warranty terms for your piece are provided with your order confirmation.',
   insuredTitle: 'Insured shipping',
   insuredBody: 'Global secure delivery with full insurance.',
 };

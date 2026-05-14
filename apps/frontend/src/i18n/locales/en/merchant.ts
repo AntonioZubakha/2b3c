@@ -2,7 +2,7 @@ export const merchant = {
   loading: 'Synchronising intelligence node…',
   title: 'Merchant',
   titleItalic: 'intel',
-  subtitle: 'Oversee the global Stonee ecosystem from one command point.',
+  subtitle: 'Oversee the global 2B3C ecosystem from one command point.',
   managerNote:
     'Manager view: full order list and logs; status changes are limited to admin and supervisor roles.',
   tabOrders: 'Orders',
@@ -45,7 +45,7 @@ export const merchant = {
   logEmpty: 'No system events in current buffer',
   healthTitle: 'API gateway',
   healthBody:
-    'Traffic flows through the Stonee gateway to catalog, orders, search, and partner services. Use refresh to reload live data.',
+    'Traffic flows through the 2B3C gateway to catalog, orders, search, and partner services. Use refresh to reload live data.',
   syncTitle: 'Catalog & feeds',
   syncBody:
     'Diamond inventory and supplier feeds are managed from operations tools and supplier integrations.',
@@ -69,7 +69,7 @@ export const merchant = {
   roleAdmin: 'Administrator',
   roleSupervisor: 'Supervisor',
   roleManager: 'Manager',
-  roleStaff: 'Stonee staff',
+  roleStaff: '2B3C staff',
   previewBuyer: 'Buyer UI preview',
   previewBuyerHint: 'Opens the same lean buyer shell as customers use (Atelier path). Turn off to return to operations chrome.',
 };

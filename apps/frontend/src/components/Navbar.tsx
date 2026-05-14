@@ -134,7 +134,7 @@ const Navbar: React.FC = () => {
               <BrandMark size={44} />
             </motion.div>
             <div className="flex flex-col">
-              <span className="font-serif text-2xl text-ink leading-none tracking-tight">Stonee</span>
+              <span className="font-serif text-2xl text-ink leading-none tracking-tight">{t('common.productName')}</span>
               <span className="text-[8px] font-medium uppercase tracking-[0.32em] text-rose-gold-deep mt-0.5">
                 {t('nav.brandSubtitle')}
               </span>

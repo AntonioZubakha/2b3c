@@ -1,5 +1,5 @@
 export const education = {
-  badge: 'Стандарт Stonee',
+  badge: 'Стандарт 2B3C',
   title1: 'Интеллект за',
   title2: 'каждым блеском',
   intro:

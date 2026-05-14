@@ -7,6 +7,7 @@ export const home = {
   titleForever: 'навсегда',
   subtitle:
     'Выберите изделие. Выберите камень. Увидьте счёт — прозрачный и полный. Наши мастера сделают остальное — тихо и вручную.',
+  seoTitle: '2B3C — ателье bespoke-украшений',
   beginPiece: 'Создать украшение',
   seeCollections: 'Смотреть коллекции',
   howItWorks: 'Как это устроено',
@@ -25,7 +26,7 @@ export const home = {
   stepIntoAtelier1: 'Шагнуть в ателье',
   quietlyDifferent: 'Тихо, но иначе',
   whyStonee1: 'Почему',
-  whyStonee2: 'Stonee',
+  whyStonee2: '2B3C',
   scoreTitle: 'Diamond Score™',
   scoreDesc:
     'Наш ИИ оценивает 15+ параметров по рыночным данным и даёт камню понятный балл 0–100. Без диплома геммолога — только лучший выбор.',

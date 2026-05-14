@@ -2,6 +2,8 @@ export const diamond = {
   seoTitle: '{{carat}}ct {{shape}} lab-grown diamond',
   seoDescription:
     '{{carat}} ct {{shape}}, {{color}} / {{clarity}}, {{lab}} certificate {{cert}} — transparent atelier pricing.',
+  seoLoadingTitle: '2B3C · Diamond',
+  seoLoadingDescription: 'Loading certified lab-grown diamond.',
   backMarketplace: 'Back to marketplace',
   shareAria: 'Share',
   verifiedReport: 'Verified lab report',
