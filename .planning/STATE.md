@@ -1,7 +1,7 @@
 ---
 status: phase_complete
-current_phase: 3
-stopped_at: execute_phase_02_complete
+current_phase: 4
+stopped_at: execute_phase_03_complete
 updated: 2026-05-14
 ---
 
@@ -9,8 +9,8 @@ updated: 2026-05-14
 
 **Проект:** 2B3C (рабочее имя), репозиторий Stonee — **brownfield**.
 
-**Фаза 2 выполнена** (`gsd-executor`): см. `02-01-SUMMARY.md`, `02-02-SUMMARY.md` в `.planning/phases/02-checkout-order/`. Коммиты на `main`: `725bd09`, `d5f4cde` (плюс планирование `21cca94`).
+**Фаза 3 выполнена** (`gsd-planner` + `gsd-executor`): `.planning/phases/03-tracking/` — планы, `orderTracking` + тесты, UI списка/детали заказа, `info/FRONTEND.md` / `info/API.md`, правки `scripts/smoke.mjs`. Коммиты: `0151282`, `0c2e9db`, `d19aad7`, `f4d646d`.
 
-**Smoke:** `pnpm run smoke` субагент не гонял — при изменениях order/gateway имеет смысл прогнать на поднятом `docker compose` (см. `02-02-SUMMARY.md`, `info/DEVELOPMENT.md`).
+**Smoke:** `pnpm run smoke` в сессии не гонялся — нужен Docker stack (см. `03-02-SUMMARY.md`).
 
-**Следующий шаг:** **`gsd-plan-phase 3`** (трекинг), затем **`gsd-execute-phase`**.
+**Следующий шаг:** **`gsd-plan-phase 4`** (бренд 2B3C и РФ), затем execute.
