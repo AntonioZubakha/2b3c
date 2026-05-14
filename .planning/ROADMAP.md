@@ -74,7 +74,7 @@ Plans:
 - [x] 03-01-PLAN.md — Read-only аудит: UI/i18n/smoke vs `OrderStatus`, GAP TRK-01/02, multi-source *(2026-05-14)*
 - [x] 03-02-PLAN.md — Timeline + копирайт + info + smoke assert (без новых enum в бэкенде) *(2026-05-14)*
 
-### Phase 4: Бренд 2B3C и РФ
+### Phase 4: Бренд и локаль РФ
 
 **Goal:** Продукт читается как 2B3C; базовые РФ-аспекты в контенте и навигации.  
 **Mode:** mvp  
@@ -86,11 +86,12 @@ Plans:
 1. Ключевые экраны показывают имя 2B3C (или согласованный lockup) без поломки деплоя.
 2. Чеклист локализации РФ в `info/PRODUCT.md` закрыт на уровне «сделано / отложено».
 
-**Plans:** TBD
+**Plans:** 2 plans (`.planning/phases/04-brand-2b3c-rf/04-0N-PLAN.md`)
 
 Plans:
 
-- [ ] 04-01: Бренд-замена в UI и метаданных — PLAN.md
+- [ ] 04-01-PLAN.md — Read-only аудит: GAP BRD-01/02 vs UI/SEO/i18n, multi-source coverage *(план готов)*
+- [ ] 04-02-PLAN.md — Реализация: 2B3C в i18n + chrome + index.html/Seo; чеклист РФ в info/PRODUCT.md; test+lint *(план готов)*
 
 ### Phase 5: Качество репозитория
 
@@ -117,7 +118,7 @@ Plans:
 | 1. Два сценария каталога | 3/3 | Complete | 2026-05-14 |
 | 2. Чекаут и заказ | 2/2 | Complete | 2026-05-14 |
 | 3. Трекинг | 2/2 | Complete | 2026-05-14 |
-| 4. Бренд и РФ | 0/TBD | Not started | - |
+| 4. Бренд и РФ | 0/2 | Planned | - |
 | 5. Качество репозитория | 0/TBD | Not started | - |
 
 ---
