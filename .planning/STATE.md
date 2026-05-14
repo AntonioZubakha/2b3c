@@ -1,7 +1,7 @@
 ---
 status: phase_complete
-current_phase: 4
-stopped_at: execute_phase_03_complete
+current_phase: 5
+stopped_at: execute_phase_04_complete
 updated: 2026-05-14
 ---
 
@@ -9,8 +9,6 @@ updated: 2026-05-14
 
 **Проект:** 2B3C (рабочее имя), репозиторий Stonee — **brownfield**.
 
-**Фаза 3 выполнена** (`gsd-planner` + `gsd-executor`): `.planning/phases/03-tracking/` — планы, `orderTracking` + тесты, UI списка/детали заказа, `info/FRONTEND.md` / `info/API.md`, правки `scripts/smoke.mjs`. Коммиты: `0151282`, `0c2e9db`, `d19aad7`, `f4d646d`.
+**Фаза 4 выполнена** (`gsd-executor`): `.planning/phases/04-brand-2b3c-rf/` — аудит `04-01`, брендинг 2B3C + чеклист РФ в `04-02` (`publicBrand.ts`, i18n, `Seo`, `index.html`, доки). Коммиты: `46add1f`, `85cd49f` (поверх планирования `43d6808`).
 
-**Smoke:** `pnpm run smoke` в сессии не гонялся — нужен Docker stack (см. `03-02-SUMMARY.md`).
-
-**Следующий шаг:** **`gsd-plan-phase 4`** (бренд 2B3C и РФ), затем execute.
+**Следующий шаг:** **`gsd-plan-phase 5`** (качество репозитория: pre-merge чеклист, smoke/lint/test в доках), затем **`gsd-execute-phase`**.
